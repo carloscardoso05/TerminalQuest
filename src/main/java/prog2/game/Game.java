@@ -1,51 +1,28 @@
 package prog2.game;
 
-import prog2.entities.Hero;
-import prog2.entities.Monster;
-import prog2.entities.Player;
+public class Game {
+    private static GameState gameState;
 
-import java.io.*;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-public class Game implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
-
-    private final Set<Player> players = new HashSet<>();
-
-    public Set<Player> getPlayers() {
-        return Set.copyOf(players);
-    }
-
-    public Set<Monster> getMonsters() {
-        return getPlayers().stream()
-                .filter(p -> p instanceof Monster)
-                .map(p -> (Monster) p)
-                .collect(Collectors.toSet());
-    }
-
-    public Set<Hero> getHeroes() {
-        return getPlayers().stream()
-                .filter(p -> p instanceof Hero)
-                .map(p -> (Hero) p)
-                .collect(Collectors.toSet());
-    }
-
-    public int getPlayersCount() {
-        return getPlayers().size();
-    }
-
-    public int getMonstersCount() {
-        return getMonsters().size();
-    }
-
-    public int getHeroesCount() {
-        return getHeroes().size();
-    }
-
-    public void addPlayer(Player player) {
-        players.add(player);
+    public static void main(String[] args) {
+        /*
+            1 - Abre o jogo
+            2 - Carrega save ou cria novo jogo
+            3 - Ajusta configurações {
+                3.1 - Seleciona classes para a party
+                3.2 - Pesonaliza nome dos heróis
+                3.3 - Seleciona dificuldade inicial
+            }
+            4 - Inicia a partida
+            5 - Loop de jogo {
+                5.1 - Monstros aparecem com base na dificuldade
+                5.2 - Calcula iniciativas
+                5.3 - Jogadores realizam uma ação
+                5.4 - Se (Todos os heróis morreram) Ir para 6
+                5.5 - Se (Todos os monstros morreram) Ir para 5.7
+                5.6 - Aplica efeitos de turno
+                5.7 - Aumenta a dificuldade e vai para 5.1
+            }
+            6 - Fim
+         */
     }
 }
