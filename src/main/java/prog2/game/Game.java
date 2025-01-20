@@ -1,8 +1,8 @@
 package prog2.game;
 
-import prog2.players.Hero;
-import prog2.players.Monster;
-import prog2.players.Player;
+import prog2.entities.Hero;
+import prog2.entities.Monster;
+import prog2.entities.Player;
 
 import java.io.*;
 import java.util.HashSet;
@@ -12,18 +12,6 @@ import java.util.stream.Collectors;
 public class Game implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
-
-    static Game instance;
-
-    public static Game getInstance() {
-        if (instance == null) {
-            instance = new Game();
-        }
-        return instance;
-    }
-
-    private Game() {
-    }
 
     private final Set<Player> players = new HashSet<>();
 

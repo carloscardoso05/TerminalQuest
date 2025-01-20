@@ -1,16 +1,19 @@
-package prog2.game;
+package prog2.util;
+
+import prog2.game.Game;
 
 import java.io.*;
+import java.util.Optional;
 
-public abstract class GameService {
-    private final static File saveFile = new File("game.ser");
+public abstract class SaveService {
+    private static final File saveFile = new File("game.ser");
 
-    public static boolean save() {
+    public static boolean save(Game game) {
         try {
             final FileOutputStream fileOutputStream = new FileOutputStream(saveFile);
             final ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-            objectOutputStream.writeObject(Game.getInstance());
+            objectOutputStream.writeObject(game);
 
             objectOutputStream.close();
             fileOutputStream.close();
@@ -21,7 +24,7 @@ public abstract class GameService {
         }
     }
 
-    public static boolean load() {
+    public static Optional<Game> loadSave() {
         try {
             final FileInputStream fileInputStream = new FileInputStream(saveFile);
 
@@ -32,10 +35,9 @@ public abstract class GameService {
             objectInputStream.close();
             fileInputStream.close();
 
-            Game.instance = game;
-            return true;
+            return Optional.of(game);
         } catch (Exception e) {
-            return false;
+            return Optional.empty();
         }
     }
 }

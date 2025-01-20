@@ -1,4 +1,7 @@
-package prog2.players;
+package prog2.entities;
+
+import prog2.entities.enums.ResultadoAtaque;
+import prog2.util.PlayerFactory;
 
 import java.io.Serial;
 import java.io.Serializable;

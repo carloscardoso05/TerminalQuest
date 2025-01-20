@@ -1,4 +1,8 @@
-package prog2.players;
+package prog2.util;
+
+import prog2.entities.Hero;
+import prog2.entities.Monster;
+import prog2.entities.Player;
 
 import java.util.Random;
 

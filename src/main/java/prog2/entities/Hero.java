@@ -1,4 +1,4 @@
-package prog2.players;
+package prog2.entities;
 
 import java.io.Serial;
 
