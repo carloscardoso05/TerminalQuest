@@ -1,4 +1,4 @@
-package prog2.game.action;
+package prog2.entities.actions;
 
 import prog2.entities.Player;
 

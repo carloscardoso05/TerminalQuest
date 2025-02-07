@@ -5,6 +5,8 @@ import java.util.Random;
 import prog2.entities.enums.ResultadoAtaque;
 
 public class Dice {
+    public static final int CRIT_ROLL = 20;
+
     private static int roll(int numLados) {
         Random rand = new Random();
         return rand.nextInt(1, numLados + 1);
@@ -23,6 +25,10 @@ public class Dice {
         }
 
         return roll(numLados);
+    }
+
+    public static int rollAtaque() {
+        return rollDice(20);
     }
 
     public static int rollDano(int numLados, int bonus, ResultadoAtaque resultado) {

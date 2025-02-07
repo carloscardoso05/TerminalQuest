@@ -1,8 +1,8 @@
-package prog2.game.action.skills;
+package prog2.entities.actions.skills.clerigo;
 
 import prog2.entities.Player;
 import prog2.game.Dice;
-import prog2.game.action.Action;
+import prog2.entities.actions.Action;
 
 public class Cura extends Action {
     private static final int MAX_CURA = 10;

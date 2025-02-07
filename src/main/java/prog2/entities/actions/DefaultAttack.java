@@ -1,4 +1,4 @@
-package prog2.game.action;
+package prog2.entities.actions;
 
 import prog2.entities.Player;
 import prog2.entities.enums.ResultadoAtaque;
@@ -18,17 +18,18 @@ public class DefaultAttack extends Action{
         Player alvo = this.getAlvo();
 
         ResultadoAtaque resultado;
-        int ataque = Dice.rollDice(20);
+        int ataque = Dice.rollAtaque();
         int bonus = origem.getDestreza();
         if (ataque + bonus >= alvo.getDefesa()) {
-            if (ataque == 20)
+            if (ataque == Dice.CRIT_ROLL)
                 resultado = ResultadoAtaque.CRITICAL_HIT;
             else
                 resultado = ResultadoAtaque.ACERTOU;
         } else {
             resultado = ResultadoAtaque.ERROU;
         }
-        int dano = Dice.rollDano(MAX_DANO + (origem.getNivel() - 1) * 2, origem.getForcaDeAtaque(), resultado);
+        int bonus_nivel = (origem.getNivel() - 1) * 2;
+        int dano = Dice.rollDano(MAX_DANO + bonus_nivel, origem.getForcaDeAtaque(), resultado);
         alvo.setVidaAtual(alvo.getVidaAtual() - dano);
     }
 }
