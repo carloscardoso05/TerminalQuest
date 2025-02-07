@@ -7,7 +7,7 @@ public class ChamarAtencao extends Action {
     private static final int custo = 5;
 
     public ChamarAtencao(Player origem) {
-        super(origem, origem);
+        super(origem, new Player[] {origem});
     }
 
     @Override

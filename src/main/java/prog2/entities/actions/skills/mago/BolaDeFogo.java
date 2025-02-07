@@ -9,18 +9,18 @@ public class BolaDeFogo extends Action {
 
     private static final int MAX_DANO = 10;
 
-    public BolaDeFogo(Player origem, Player alvo) {
-        super(origem, alvo);
+    public BolaDeFogo(Player origem, Player[] alvos) {
+        super(origem, alvos);
     }
 
     @Override
     public void execute() {
-        Player origem = this.getOrigem();
-        Player alvo = this.getAlvo();
+        Player origem = super.getOrigem();
+        Player alvo = super.getAlvo()[0];
 
         int ataque = Dice.rollAtaque();
         // TODO: ATRIBUTO PARA BÔNUS NOS ATAQUES MÁGICOS
-        ResultadoAtaque resultado = super.getResultadoAtaque(ataque, 0);
+        ResultadoAtaque resultado = super.getResultadoAtaque(alvo, ataque, 0);
 
         int bonus_nivel = (origem.getNivel() - 1) * 2;
         int dano = Dice.rollDano(MAX_DANO + bonus_nivel, origem.getForcaDeAtaque(), resultado);

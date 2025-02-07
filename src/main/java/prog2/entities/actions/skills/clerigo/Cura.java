@@ -8,14 +8,14 @@ public class Cura extends Action {
     private static final int MAX_CURA = 10;
     private static final int CUSTO = 5;
 
-    public Cura(Player origem, Player alvo) {
-        super(origem, alvo);
+    public Cura(Player origem, Player[] alvos) {
+        super(origem, alvos);
     }
 
     @Override
     public void execute() {
-        Player origem = getOrigem();
-        Player alvo = getAlvo();
+        Player origem = super.getOrigem();
+        Player alvo = super.getAlvo()[0];
 
         // TODO: CRIAR ATRIBUTO MANA NA CLASSE PLAYER
         // TODO: POSSIVELMENTE ADICIONAR ATRIBUTO DE MAGIA PARA BÔNUS

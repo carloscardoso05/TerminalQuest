@@ -5,11 +5,12 @@ import prog2.entities.enums.ResultadoAtaque;
 import prog2.game.Dice;
 
 public abstract class Action {
-    private Player origem, alvo;
+    private Player origem;
+    private Player[] alvos;
 
-    public Action(Player origem, Player alvo) {
+    public Action(Player origem, Player[] alvos) {
         this.setOrigem(origem);
-        this.setAlvo(alvo);
+        this.setAlvo(alvos);
     }
 
     public Player getOrigem() {
@@ -19,14 +20,14 @@ public abstract class Action {
         this.origem = origem;
     }
 
-    public Player getAlvo() {
-        return alvo;
+    public Player[] getAlvo() {
+        return alvos;
     }
-    public void setAlvo(Player alvo) {
-        this.alvo = alvo;
+    public void setAlvo(Player[] alvos) {
+        this.alvos = alvos;
     }
 
-    public ResultadoAtaque getResultadoAtaque(int ataque, int bonus) {
+    public ResultadoAtaque getResultadoAtaque(Player alvo, int ataque, int bonus) {
         if (ataque + bonus >= alvo.getDefesa()) {
             if (ataque == Dice.CRIT_ROLL)
                 return ResultadoAtaque.CRITICAL_HIT;

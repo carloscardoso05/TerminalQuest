@@ -8,19 +8,19 @@ public class DefaultAttack extends Action{
 
     private static final int MAX_DANO = 6;
 
-    public DefaultAttack(Player origem, Player alvo) {
-        super(origem, alvo);
+    public DefaultAttack(Player origem, Player[] alvos) {
+        super(origem, alvos);
     }
 
     @Override
     public void execute() {
         Player origem = this.getOrigem();
-        Player alvo = this.getAlvo();
+        Player alvo = this.getAlvo()[0];
 
 
         int ataque = Dice.rollAtaque();
         int bonus = origem.getDestreza();
-        ResultadoAtaque resultado = getResultadoAtaque(ataque, bonus);
+        ResultadoAtaque resultado = getResultadoAtaque(alvo, ataque, bonus);
 
         int bonus_nivel = (origem.getNivel() - 1) * 2;
         int dano = Dice.rollDano(MAX_DANO + bonus_nivel, origem.getForcaDeAtaque(), resultado);
