@@ -27,6 +27,17 @@ public class Dice {
         return roll(numLados);
     }
 
+    public static int[] rollDices(int numDados, int numLados) {
+        if (numDados < 1 || numLados < 2) {
+            throw new IllegalArgumentException("Número de dados ou lados inválido");
+        }
+        int[] res = new int[numDados];
+        for (int i = 0; i < numDados; i++) {
+            res[i] = roll(numLados);
+        }
+        return res;
+    }
+
     public static int rollAtaque() {
         return rollDice(20);
     }
