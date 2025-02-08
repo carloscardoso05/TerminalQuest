@@ -1,6 +1,7 @@
 package prog2.entities;
 
 import prog2.entities.enums.ResultadoAtaque;
+import prog2.util.ToString;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -96,5 +97,10 @@ public class Player implements Serializable {
 
     public void setNivel(int nivel) {
         this.nivel = nivel;
+    }
+
+    @Override
+    public String toString() {
+        return ToString.fromGetters(this);
     }
 }

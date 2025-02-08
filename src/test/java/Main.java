@@ -1,4 +1,4 @@
-import prog2.game.Log;
+import prog2.game.log.Log;
 
 public class Main {
     public static void main(String[] args) {
