@@ -1,7 +1,6 @@
 package prog2.entities;
 
 import prog2.entities.enums.ResultadoAtaque;
-import prog2.util.PlayerFactory;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -28,10 +27,6 @@ public class Player implements Serializable {
         this.velocidade = velocidade;
         this.destreza = destreza;
         this.nivel = nivel;
-    }
-
-    public static Player criarAleatorio(String nome) {
-        return PlayerFactory.criarPlayerAleatorio(nome);
     }
 
     // TODO implementar ataque do player
