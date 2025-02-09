@@ -1,33 +1,67 @@
 package prog2.entities;
 
+import prog2.entities.actions.attack.Attack;
+import prog2.entities.actions.attack.DefaultAttack;
+import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
+import prog2.entities.status.Status;
 import prog2.util.ToString;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Player implements Serializable {
+public abstract class Player implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
     protected String nome;
-    protected int vidaMaxima;
+    protected final int vidaMaxima;
     protected int vidaAtual;
+    protected final int manaMaxima;
+    protected int manaAtual;
     protected int forcaDeAtaque;
+    protected int inteligencia;
     protected int defesa;
     protected int velocidade;
     protected int destreza;
     protected int nivel;
+    protected int ameaca;
+    protected Attack ataque;
+    protected final List<Skill> habilidades = new ArrayList<>();
+    protected final List<Status> status = new ArrayList<>();
 
-    public Player(String nome, int vidaMaxima, int vidaAtual, int forcaDeAtaque, int defesa, int velocidade, int destreza, int nivel) {
+    public Player(String nome, int vidaMaxima, int vidaAtual, int manaMaxima, int manaAtual, int forcaDeAtaque, int inteligencia, int defesa, int velocidade, int destreza, int nivel, int ameaca) {
         this.nome = nome;
         this.vidaMaxima = vidaMaxima;
         this.vidaAtual = vidaAtual;
+        this.manaMaxima = manaMaxima;
+        this.manaAtual = manaAtual;
         this.forcaDeAtaque = forcaDeAtaque;
+        this.inteligencia = inteligencia;
         this.defesa = defesa;
         this.velocidade = velocidade;
         this.destreza = destreza;
         this.nivel = nivel;
+        this.ameaca = ameaca;
+        this.ataque = new DefaultAttack();
+    }
+
+    public Player(String nome, int vidaMaxima, int vidaAtual, int manaMaxima, int manaAtual, int forcaDeAtaque, int inteligencia, int defesa, int velocidade, int destreza, int nivel, int ameaca, Attack ataque) {
+        this.nome = nome;
+        this.vidaMaxima = vidaMaxima;
+        this.vidaAtual = vidaAtual;
+        this.manaMaxima = manaMaxima;
+        this.manaAtual = manaAtual;
+        this.forcaDeAtaque = forcaDeAtaque;
+        this.inteligencia = inteligencia;
+        this.defesa = defesa;
+        this.velocidade = velocidade;
+        this.destreza = destreza;
+        this.nivel = nivel;
+        this.ameaca = ameaca;
+        this.ataque = ataque;
     }
 
     // TODO implementar ataque do player
@@ -45,10 +79,6 @@ public class Player implements Serializable {
 
     public int getVidaMaxima() {
         return vidaMaxima;
-    }
-
-    public void setVidaMaxima(int vidaMaxima) {
-        this.vidaMaxima = vidaMaxima;
     }
 
     public int getVidaAtual() {

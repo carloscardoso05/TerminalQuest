@@ -5,26 +5,10 @@ import prog2.entities.enums.ResultadoAtaque;
 import prog2.game.Dice;
 
 public abstract class Action {
-    private Player origem;
-    private Player[] alvos;
+    private final String name;
 
-    public Action(Player origem, Player[] alvos) {
-        this.setOrigem(origem);
-        this.setAlvo(alvos);
-    }
-
-    public Player getOrigem() {
-        return origem;
-    }
-    public void setOrigem(Player origem) {
-        this.origem = origem;
-    }
-
-    public Player[] getAlvo() {
-        return alvos;
-    }
-    public void setAlvo(Player[] alvos) {
-        this.alvos = alvos;
+    public Action(String name) {
+        this.name = name;
     }
 
     public ResultadoAtaque getResultadoAtaque(Player alvo, int ataque, int bonus) {
@@ -36,5 +20,9 @@ public abstract class Action {
         return ResultadoAtaque.ERROU;
     }
 
-    public abstract void execute();
+    public abstract void execute(Player origem, Player[] alvos);
+
+    public String getName() {
+        return name;
+    }
 }
