@@ -32,28 +32,16 @@ public abstract class Player implements Serializable {
     protected final List<Skill> habilidades = new ArrayList<>();
     protected final List<Status> status = new ArrayList<>();
 
-    public Player(String nome, int vidaMaxima, int vidaAtual, int manaMaxima, int manaAtual, int forcaDeAtaque, int inteligencia, int defesa, int velocidade, int destreza, int nivel, int ameaca) {
-        this.nome = nome;
-        this.vidaMaxima = vidaMaxima;
-        this.vidaAtual = vidaAtual;
-        this.manaMaxima = manaMaxima;
-        this.manaAtual = manaAtual;
-        this.forcaDeAtaque = forcaDeAtaque;
-        this.inteligencia = inteligencia;
-        this.defesa = defesa;
-        this.velocidade = velocidade;
-        this.destreza = destreza;
-        this.nivel = nivel;
-        this.ameaca = ameaca;
-        this.ataque = new DefaultAttack();
+    public Player(String nome, int vidaMaxima, int manaMaxima, int forcaDeAtaque, int inteligencia, int defesa, int velocidade, int destreza, int nivel, int ameaca) {
+        this(nome, vidaMaxima, manaMaxima, forcaDeAtaque, inteligencia, defesa, velocidade, destreza, nivel, ameaca, new DefaultAttack());
     }
 
-    public Player(String nome, int vidaMaxima, int vidaAtual, int manaMaxima, int manaAtual, int forcaDeAtaque, int inteligencia, int defesa, int velocidade, int destreza, int nivel, int ameaca, Attack ataque) {
+    public Player(String nome, int vidaMaxima, int manaMaxima, int forcaDeAtaque, int inteligencia, int defesa, int velocidade, int destreza, int nivel, int ameaca, Attack ataque) {
         this.nome = nome;
         this.vidaMaxima = vidaMaxima;
-        this.vidaAtual = vidaAtual;
+        this.vidaAtual = vidaMaxima;
         this.manaMaxima = manaMaxima;
-        this.manaAtual = manaAtual;
+        this.manaAtual = manaMaxima;
         this.forcaDeAtaque = forcaDeAtaque;
         this.inteligencia = inteligencia;
         this.defesa = defesa;
