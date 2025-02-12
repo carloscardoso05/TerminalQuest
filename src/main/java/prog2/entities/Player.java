@@ -117,6 +117,50 @@ public abstract class Player implements Serializable {
         this.nivel = nivel;
     }
 
+    public int getManaMaxima() {
+        return manaMaxima;
+    }
+
+    public int getManaAtual() {
+        return manaAtual;
+    }
+
+    public void setManaAtual(int manaAtual) {
+        this.manaAtual = manaAtual;
+    }
+
+    public int getInteligencia() {
+        return inteligencia;
+    }
+
+    public void setInteligencia(int inteligencia) {
+        this.inteligencia = inteligencia;
+    }
+
+    public int getAmeaca() {
+        return ameaca;
+    }
+
+    public void setAmeaca(int ameaca) {
+        this.ameaca = ameaca;
+    }
+
+    public Attack getAtaque() {
+        return ataque;
+    }
+
+    public void setAtaque(Attack ataque) {
+        this.ataque = ataque;
+    }
+
+    public List<Skill> getHabilidades() {
+        return habilidades;
+    }
+
+    public List<Status> getStatus() {
+        return status;
+    }
+
     @Override
     public String toString() {
         return ToString.fromGetters(this);
