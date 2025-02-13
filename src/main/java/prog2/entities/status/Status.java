@@ -1,6 +1,7 @@
 package prog2.entities.status;
 
 import prog2.entities.Player;
+import prog2.util.exceptions.ImpedeAcao;
 
 public abstract class Status {
     private final String nome;
@@ -23,7 +24,7 @@ public abstract class Status {
         this.duracaoRestante -= 1;
     }
 
-    public abstract void aplicarEfeito(Player player);
+    public abstract void aplicarEfeito(Player player) throws ImpedeAcao;
 
     public abstract void removerEfeito(Player player);
 }
