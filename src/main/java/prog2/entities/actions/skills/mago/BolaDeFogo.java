@@ -17,9 +17,10 @@ public class BolaDeFogo extends Skill {
     public void execute(Player origem, Player[] alvos) {
         Player alvo = alvos[0];
 
+        origem.setManaAtual(origem.getManaAtual() - this.getCusto());
+
         int ataque = Dice.rollAtaque();
-        // TODO: ATRIBUTO PARA BÔNUS NOS ATAQUES MÁGICOS
-        ResultadoAtaque resultado = super.getResultadoAtaque(alvo, ataque, 0);
+        ResultadoAtaque resultado = super.getResultadoAtaque(alvo, ataque, origem.getInteligencia());
 
         int bonus_nivel = (origem.getNivel() - 1) * 2;
         int dano = Dice.rollDano(MAX_DANO + bonus_nivel, origem.getForcaDeAtaque(), resultado);
