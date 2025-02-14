@@ -15,6 +15,10 @@ public abstract class Action {
 
     public abstract ResultadoAtaque execute(Player origem, List<Player> alvos);
 
+    public final ResultadoAtaque execute(Player origem, Player alvo) {
+        return execute(origem, List.of(alvo));
+    }
+
     protected ResultadoAtaque getResultadoAtaque(Player alvo, int ataque, int bonus) {
         if (ataque + bonus >= alvo.getDefesa()) {
             if (ataque == Dice.CRIT_ROLL)

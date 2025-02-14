@@ -1,16 +1,15 @@
 package prog2.game;
 
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import prog2.entities.Hero;
 import prog2.entities.Monster;
 import prog2.entities.Player;
 import prog2.util.ToString;
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Turno implements Serializable {
     @Serial
