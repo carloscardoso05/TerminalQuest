@@ -23,24 +23,30 @@ public class Turno implements Serializable {
         turnNumber += 1;
     }
 
-    private final Set<Player> players = new HashSet<>();
-
-    public Set<Player> getPlayers() {
-        return Set.copyOf(players);
+    public List<Player> getPlayerEmOrdemDeAcao() {
+        final List<Player> players = new ArrayList<>(getPlayers());
+        players.sort((p1, p2) -> Integer.compare(p2.getVelocidade(), p1.getVelocidade()));
+        return players;
     }
 
-    public Set<Monster> getMonsters() {
+    private final List<Player> players = new ArrayList<>();
+
+    public List<Player> getPlayers() {
+        return List.copyOf(players);
+    }
+
+    public List<Monster> getMonsters() {
         return getPlayers().stream()
                 .filter(p -> p instanceof Monster)
                 .map(p -> (Monster) p)
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
     }
 
-    public Set<Hero> getHeroes() {
+    public List<Hero> getHeroes() {
         return getPlayers().stream()
                 .filter(p -> p instanceof Hero)
                 .map(p -> (Hero) p)
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
     }
 
     public int getPlayersCount() {
@@ -57,6 +63,12 @@ public class Turno implements Serializable {
 
     public void addPlayer(Player player) {
         players.add(player);
+    }
+
+    public void addPlayer(List<Player> players) {
+        for (final Player player : players) {
+            addPlayer(player);
+        }
     }
 
     public int getTurnNumber() {

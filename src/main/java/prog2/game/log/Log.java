@@ -12,8 +12,17 @@ import java.util.List;
 import java.util.Optional;
 
 public class Log implements Serializable {
+    private static Log instance;
+
+    public static Log getInstance() {
+        if (instance == null) {
+            instance = new Log();
+        }
+        return instance;
+    }
+
     @Serial
-    private final static long  serialVersionUID = 1L;
+    private final static long serialVersionUID = 1L;
     private final List<String> lines = new ArrayList<>();
 
     private static String formatMessage(String message, LogType type) {
@@ -21,7 +30,9 @@ public class Log implements Serializable {
     }
 
     public void write(String message, LogType type) {
-        lines.add(formatMessage(message, type));
+        final String formattedMessage = formatMessage(message, type);
+        System.out.printf(formattedMessage);
+        lines.add(formattedMessage);
     }
 
     public void game(String message) {

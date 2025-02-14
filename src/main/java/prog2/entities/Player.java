@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player implements Serializable {
+public abstract class Player implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
