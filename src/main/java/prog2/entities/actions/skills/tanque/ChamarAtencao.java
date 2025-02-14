@@ -1,10 +1,11 @@
 package prog2.entities.actions.skills.tanque;
 
+import java.util.List;
+
 import prog2.entities.Player;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
-
-import java.util.List;
+import prog2.entities.status.Ameacador;
 
 public class ChamarAtencao extends Skill {
     public ChamarAtencao() {
@@ -13,6 +14,8 @@ public class ChamarAtencao extends Skill {
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        origem.setManaAtual(origem.getManaAtual() - this.getCusto());
+        origem.getStatus().add(new Ameacador());
+        return ResultadoAtaque.ACERTOU;
     }
 }
