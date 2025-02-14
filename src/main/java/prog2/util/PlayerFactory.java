@@ -15,12 +15,15 @@ public abstract class PlayerFactory {
 
     public static Player criarPlayerAleatorio(String nome) {
         final int vidaMaxima = randomInt(100, 200);
+        final int manaMaxima = randomInt(100, 200);
         final int forcaDeAtaque = randomInt(10, 20);
         final int defesa = randomInt(5, 10);
+        final int inteligencia = randomInt(5, 10);
         final int velocidade = randomInt(5, 10);
         final int destreza = randomInt(5, 10);
         final int nivel = randomInt(1, 10);
-        return new Player(nome, vidaMaxima, vidaMaxima, forcaDeAtaque, defesa, velocidade, destreza, nivel);
+        final int ameaca = randomInt(1, 10);
+        return new Player(nome, vidaMaxima, manaMaxima, forcaDeAtaque, inteligencia, defesa, velocidade, destreza, nivel, ameaca);
     }
 
     public static Hero criarHeroiAleatorio(String nome) {
