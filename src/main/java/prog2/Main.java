@@ -5,6 +5,7 @@ import prog2.util.SaveService;
 
 public class Main {
     public static void main(String[] args) {
-        SaveService.selectGame();
+        final Game game = SaveService.selectGame();
+        game.run();
     }
 }

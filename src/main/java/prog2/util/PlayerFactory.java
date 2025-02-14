@@ -1,33 +1,32 @@
 package prog2.util;
 
-import prog2.entities.Hero;
-import prog2.entities.Monster;
-import prog2.entities.Player;
+import prog2.entities.*;
 
 import java.util.Random;
 
 public abstract class PlayerFactory {
     private static final Random rd = new Random();
 
-    private static int randomInt(int min, int max) {
-        return rd.nextInt(min, max + 1);
-    }
-
     public static Player criarPlayerAleatorio(String nome) {
-        final int vidaMaxima = randomInt(100, 200);
-        final int forcaDeAtaque = randomInt(10, 20);
-        final int defesa = randomInt(5, 10);
-        final int velocidade = randomInt(5, 10);
-        final int destreza = randomInt(5, 10);
-        final int nivel = randomInt(1, 10);
-        return new Player(nome, vidaMaxima, vidaMaxima, forcaDeAtaque, defesa, velocidade, destreza, nivel);
+        final int n = rd.nextInt(2);
+        return switch (n) {
+            case 0 -> criarHeroiAleatorio(nome);
+            case 1 -> criarMonstroAleatorio(nome);
+            default -> throw new IllegalArgumentException("Tipo de jogador inválido. Valor: " + n);
+        };
     }
 
     public static Hero criarHeroiAleatorio(String nome) {
-        return (Hero) criarPlayerAleatorio(nome);
+        final int n = rd.nextInt(4);
+        return switch (n) {
+            case 0 -> new Bardo(nome);
+            case 1 -> new Ladino(nome);
+            case 2 -> new Mago(nome);
+            default -> throw new IllegalArgumentException("Classe de herói inválida. Valor: " + n);
+        };
     }
 
     public static Monster criarMonstroAleatorio(String nome) {
-        return (Monster) criarPlayerAleatorio(nome);
+        throw new UnsupportedOperationException("Método não implementado");
     }
 }
