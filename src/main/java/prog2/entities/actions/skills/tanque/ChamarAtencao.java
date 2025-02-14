@@ -1,8 +1,10 @@
 package prog2.entities.actions.skills.tanque;
 
 import prog2.entities.Player;
-import prog2.entities.actions.Action;
 import prog2.entities.actions.skills.Skill;
+import prog2.entities.enums.ResultadoAtaque;
+
+import java.util.List;
 
 public class ChamarAtencao extends Skill {
     public ChamarAtencao() {
@@ -10,8 +12,7 @@ public class ChamarAtencao extends Skill {
     }
 
     @Override
-    public void execute(Player origem, Player[] alvos) {
-        // TODO: CRIAR ATRIBUTO MANA NA CLASSE PLAYER
-        // TODO: ADICIONAR ATRIBUTO DE AMEAÇA
+    public ResultadoAtaque execute(Player origem, List<Player> alvos) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

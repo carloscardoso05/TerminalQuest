@@ -29,17 +29,17 @@ public class Log implements Serializable {
         return String.format("[ %s | %s ] %s\n", java.time.LocalDateTime.now(), type.name(), message);
     }
 
-    public void write(String message, LogType type) {
-        final String formattedMessage = formatMessage(message, type);
+    public void write(Object message, LogType type) {
+        final String formattedMessage = formatMessage(message.toString(), type);
         System.out.printf(formattedMessage);
         lines.add(formattedMessage);
     }
 
-    public void game(String message) {
+    public void game(Object message) {
         write(message, LogType.GAME);
     }
 
-    public void error(String message) {
+    public void error(Object message) {
         write(message, LogType.ERROR);
     }
 

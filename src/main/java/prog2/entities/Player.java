@@ -54,7 +54,11 @@ public abstract class Player implements Serializable {
 
     // TODO implementar ataque do player
     public ResultadoAtaque realizarAtaque(Player alvo) {
-        throw new UnsupportedOperationException("Método não implementado");
+        return ataque.execute(this, List.of(alvo));
+    }
+
+    public boolean estaVivo() {
+        return vidaAtual > 0;
     }
 
     public String getNome() {

@@ -4,6 +4,8 @@ import prog2.entities.Player;
 import prog2.entities.enums.ResultadoAtaque;
 import prog2.game.Dice;
 
+import java.util.List;
+
 public abstract class Action {
     private final String name;
 
@@ -11,7 +13,9 @@ public abstract class Action {
         this.name = name;
     }
 
-    public ResultadoAtaque getResultadoAtaque(Player alvo, int ataque, int bonus) {
+    public abstract ResultadoAtaque execute(Player origem, List<Player> alvos);
+
+    protected ResultadoAtaque getResultadoAtaque(Player alvo, int ataque, int bonus) {
         if (ataque + bonus >= alvo.getDefesa()) {
             if (ataque == Dice.CRIT_ROLL)
                 return ResultadoAtaque.CRITICAL_HIT;
@@ -19,8 +23,6 @@ public abstract class Action {
         }
         return ResultadoAtaque.ERROU;
     }
-
-    public abstract void execute(Player origem, Player[] alvos);
 
     public String getName() {
         return name;

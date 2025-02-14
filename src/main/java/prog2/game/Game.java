@@ -1,6 +1,7 @@
 package prog2.game;
 
 import prog2.entities.Player;
+import prog2.entities.enums.ResultadoAtaque;
 import prog2.game.log.Log;
 import prog2.util.PlayerFactory;
 import prog2.util.Aleatorio;
@@ -36,14 +37,14 @@ public class Game implements Serializable {
         turno.addPlayer(PlayerFactory.criarHeroiAleatorio("H2"));
         turno.addPlayer(PlayerFactory.criarHeroiAleatorio("H3"));
 
-        while (true) {
-            turno.getPlayerEmOrdemDeAcao().forEach(p -> {
-                log.game(p.getNome() + " está atacando");
-                final Player alvo = Aleatorio.escolhe(turno.getPlayers());
-                p.realizarAtaque(alvo);
-            });
-            turno.nextTurn();
-        }
+        Player a = turno.getPlayers().get(0);
+        Player b = turno.getPlayers().get(3);
+        log.game(a);
+        log.game(b);
+        ResultadoAtaque resultado = a.realizarAtaque(b);
+        log.game("%s atacou %s, resultado = %s".formatted(a.getNome(), b.getNome(), resultado));
+        log.game(a);
+        log.game(b);
     }
 
     @Override
