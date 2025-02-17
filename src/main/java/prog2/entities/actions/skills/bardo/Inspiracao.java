@@ -1,17 +1,15 @@
-package prog2.entities.actions.skills.clerigo;
+package prog2.entities.actions.skills.bardo;
 
 import java.util.List;
 
 import prog2.entities.Player;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
-import prog2.game.Dice;
+import prog2.entities.status.Inspirado;
 
-public class Cura extends Skill {
-    private static final int MAX_CURA = 10;
-
-    public Cura() {
-        super("Cura", 5);
+public class Inspiracao extends Skill {
+    public Inspiracao() {
+        super("Inspiração de Bardo", 5);
     }
 
     @Override
@@ -19,8 +17,7 @@ public class Cura extends Skill {
         Player alvo = alvos.get(0);
 
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
-        int cura = Dice.rollDice(MAX_CURA);
-        alvo.setVidaAtual(Math.min(alvo.getVidaAtual() + cura, alvo.getVidaMaxima()));
+        alvo.getStatus().add(new Inspirado());
         return ResultadoAtaque.ACERTOU;
     }
 }

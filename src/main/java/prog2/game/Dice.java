@@ -57,7 +57,6 @@ public class Dice {
         if (numLados < 2) {
             throw new IllegalArgumentException("Número de lados inválido");
         }
-        Random rand = new Random();
 
         return switch (resultado) {
             case CRITICAL_HIT -> 2 * roll(numLados);
