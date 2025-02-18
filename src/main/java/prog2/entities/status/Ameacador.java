@@ -13,7 +13,7 @@ public class Ameacador extends Status {
     }
 
     @Override
-    public void removerEfeito(Player player) {
+    public void reverterEfeito(Player player) {
         player.setAmeaca(player.getAmeaca() - 2);
     }
 }
