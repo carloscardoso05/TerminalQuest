@@ -3,6 +3,7 @@ package prog2.game;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,13 +26,13 @@ public class Turno implements Serializable {
         }
         for (Player p : this.getPlayers()) {
             // Aplica os efeitos de status e verifica possibilidade de ação
-            List<Status> status = p.getStatus();
+            Iterator<Status> status = p.getStatus().iterator();
             boolean acao = true;
-            for (Status s : status) {
+            while (status.hasNext()) {
+                Status s = status.next();
                 if (s.getDuracaoRestante() < 1) {
                     s.removerEfeito(p);
-                    // Talvez quebre remover no meio da iteração
-                    status.remove(s);
+                    status.remove();
                     continue;
                 }
                 try {
