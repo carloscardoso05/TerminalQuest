@@ -4,6 +4,7 @@ import prog2.entities.Player;
 import prog2.util.exceptions.ImpedeAcao;
 
 public class Escondido extends Status {
+    private Player alvo;
     public Escondido() {
         super("Escondido", 1);
     }
