@@ -25,13 +25,13 @@ public class Turno implements Serializable {
         }
         for (Player p : this.getPlayers()) {
             // Aplica os efeitos de status e verifica possibilidade de ação
-            List<Status> status = p.getStatus();
+            Iterator<Status> status = p.getStatus().iterator();
             boolean acao = true;
-            for (Status s : status) {
+            while (status.hasNext()) {
+                Status s = status.next();
                 if (s.getDuracaoRestante() < 1) {
                     s.removerEfeito(p);
-                    // Talvez quebre remover no meio da iteração
-                    status.remove(s);
+                    status.remove();
                     continue;
                 }
                 try {
@@ -59,8 +59,7 @@ public class Turno implements Serializable {
                     case 2:
                         // ITEM
                 }
-            }
-            else {
+            } else {
                 // IA do monstro
             }
         }
