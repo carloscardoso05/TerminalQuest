@@ -30,6 +30,7 @@ public abstract class Player implements Serializable {
     protected int velocidade;
     protected int destreza;
     protected int nivel;
+    protected int exp;
     protected int ameaca;
     protected Attack ataque;
     protected final List<Skill> habilidades = new ArrayList<>();
@@ -51,6 +52,7 @@ public abstract class Player implements Serializable {
         this.velocidade = velocidade;
         this.destreza = destreza;
         this.nivel = nivel;
+        this.exp = 0;
         this.ameaca = ameaca;
         this.ataque = ataque;
     }
@@ -126,6 +128,10 @@ public abstract class Player implements Serializable {
     public void setNivel(int nivel) {
         this.nivel = nivel;
     }
+
+    public int getExp() { return exp; }
+
+    public void setExp(int exp) { this.exp = exp; }
 
     public int getManaMaxima() {
         return manaMaxima;
