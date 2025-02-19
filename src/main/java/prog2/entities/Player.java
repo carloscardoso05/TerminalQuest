@@ -5,6 +5,8 @@ import prog2.entities.actions.attack.DefaultAttack;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
 import prog2.entities.status.Status;
+import prog2.game.log.Log;
+import prog2.util.PlayerIA;
 import prog2.util.ToString;
 
 import java.io.Serial;
@@ -12,10 +14,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player implements Serializable {
+public abstract class Player implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    public final PlayerIA ia = new PlayerIA(this);
     protected String nome;
     protected final int vidaMaxima;
     protected int vidaAtual;
@@ -54,7 +57,14 @@ public class Player implements Serializable {
 
     // TODO implementar ataque do player
     public ResultadoAtaque realizarAtaque(Player alvo) {
-        throw new UnsupportedOperationException("Método não implementado");
+        final ResultadoAtaque resultado = ataque.execute(this, List.of(alvo));
+        Log.getInstance()
+                .game(this.nome + " atacou " + alvo.nome + " com " + resultado);
+        return resultado;
+    }
+
+    public boolean estaMorto() {
+        return vidaAtual <= 0;
     }
 
     public String getNome() {

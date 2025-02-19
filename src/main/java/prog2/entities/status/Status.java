@@ -26,5 +26,10 @@ public abstract class Status {
 
     public abstract void aplicarEfeito(Player player) throws ImpedeAcao;
 
-    public abstract void removerEfeito(Player player);
+    public void removerEfeito(Player player) {
+        player.getStatus().remove(this);
+        reverterEfeito(player);
+    }
+
+    protected abstract void reverterEfeito(Player player);
 }

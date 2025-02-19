@@ -1,10 +1,11 @@
 package prog2.entities.actions.skills.mago;
 
 import prog2.entities.Player;
-import prog2.entities.actions.Action;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
 import prog2.game.Dice;
+
+import java.util.List;
 
 public class BolaDeFogo extends Skill {
     private static final int MAX_DANO = 10;
@@ -14,16 +15,19 @@ public class BolaDeFogo extends Skill {
     }
 
     @Override
-    public void execute(Player origem, Player[] alvos) {
-        Player alvo = alvos[0];
+    public ResultadoAtaque execute(Player origem, List<Player> alvos) {
+        Player alvo = alvos.get(0);
 
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
         int ataque = Dice.rollAtaque();
-        ResultadoAtaque resultado = super.getResultadoAtaque(alvo, ataque, origem.getInteligencia());
+        // TODO: ATRIBUTO PARA BÔNUS NOS ATAQUES MÁGICOS
+        ResultadoAtaque resultado = getResultadoAtaque(alvo, ataque, origem.getInteligencia());
 
         int bonus_nivel = (origem.getNivel() - 1) * 2;
         int dano = Dice.rollDano(MAX_DANO + bonus_nivel, origem.getForcaDeAtaque(), resultado);
         alvo.setVidaAtual(alvo.getVidaAtual() - dano);
+
+        return resultado;
     }
 }

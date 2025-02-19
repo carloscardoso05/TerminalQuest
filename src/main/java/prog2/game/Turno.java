@@ -1,5 +1,14 @@
 package prog2.game;
 
+import prog2.entities.Hero;
+import prog2.entities.Monster;
+import prog2.entities.Player;
+import prog2.entities.status.Status;
+import prog2.game.log.Log;
+import prog2.util.PlayerFactory;
+import prog2.util.ToString;
+import prog2.util.exceptions.ImpedeAcao;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,73 +16,77 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import prog2.entities.Hero;
-import prog2.entities.Monster;
-import prog2.entities.Player;
-import prog2.entities.status.Status;
-import prog2.util.ToString;
-import prog2.util.exceptions.ImpedeAcao;
-
 public class Turno implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private int turnNumber;
+    private int turnNumber = 1;
+    private int difficulty;
+
+    public boolean todosMortos(List<? extends Player> players) {
+        for (Player player : players) {
+            if (!player.estaMorto())
+                return false;
+        }
+        return true;
+    }
+
+    public boolean hasNextTurn() {
+        if (todosMortos(getHeroes())) {
+            Log.getInstance().game("Derrota. Todos os heróis morreram.");
+            return false;
+        }
+        if (todosMortos(getMonsters())) {
+            Log.getInstance().game("Vitória. Todos os monstros morreram.");
+            return false;
+        }
+        return true;
+    }
 
     public void nextTurn() {
         if (turnNumber == 1) {
-            getPlayerEmOrdemDeAcao();
+            addPlayer(List.of(
+                    PlayerFactory.criarMonstroAleatorio("Monstro 1"),
+                    PlayerFactory.criarMonstroAleatorio("Monstro 2"),
+                    PlayerFactory.criarMonstroAleatorio("Monstro 3"),
+                    PlayerFactory.criarMonstroAleatorio("Monstro 4")
+            ));
+            organizaPlayersEmOrdemDeAcao();
         }
-        for (Player p : this.getPlayers()) {
+
+        if (!hasNextTurn()) {
+            return;
+        }
+
+        for (Player player : this.getPlayers()) {
             // Aplica os efeitos de status e verifica possibilidade de ação
-            Iterator<Status> status = p.getStatus().iterator();
+            Iterator<Status> statusIter = player.getStatus().iterator();
             boolean acao = true;
-            while (status.hasNext()) {
-                Status s = status.next();
-                if (s.getDuracaoRestante() < 1) {
-                    s.removerEfeito(p);
-                    status.remove();
+            while (statusIter.hasNext()) {
+                Status status = statusIter.next();
+                if (status.getDuracaoRestante() < 1) {
+                    status.removerEfeito(player);
                     continue;
                 }
                 try {
-                    s.diminuirDuracaoRestante();
-                    s.aplicarEfeito(p);
+                    status.diminuirDuracaoRestante();
+                    status.aplicarEfeito(player);
                 } catch (ImpedeAcao e) {
                     acao = false;
                 }
             }
-            if (!acao) {
+            if (!acao || player.estaMorto()) {
                 continue;
             }
-
-            if (p instanceof Hero) {
-                // Get ação e alvo
-                int tipoAcao = 0;
-                Player[] alvos = null;
-                switch (tipoAcao) {
-                    case 0:
-                        p.getAtaque().execute(p, alvos);
-                        break;
-                    case 1:
-                        p.getHabilidades().get(0).execute(p, alvos);
-                        break;
-                    case 2:
-                        // ITEM
-                }
-            }
-            else {
-                // IA do monstro
-            }
+            player.ia.realizarAcao(players);
         }
         turnNumber += 1;
     }
 
-    public List<Player> getPlayerEmOrdemDeAcao() {
-        final List<Player> players = new ArrayList<>(getPlayers());
+    public void organizaPlayersEmOrdemDeAcao() {
         players.sort((p1, p2) -> Integer.compare(
                 Dice.rollDice(20, p2.getVelocidade()),
                 Dice.rollDice(20, p1.getVelocidade())));
-        return players;
     }
 
     private final List<Player> players = new ArrayList<>();
@@ -112,7 +125,7 @@ public class Turno implements Serializable {
         players.add(player);
     }
 
-    public void addPlayer(List<Player> players) {
+    public void addPlayer(List<? extends Player> players) {
         for (final Player player : players) {
             addPlayer(player);
         }

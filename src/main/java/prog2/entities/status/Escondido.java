@@ -15,7 +15,7 @@ public class Escondido extends Status {
     }
 
     @Override
-    public void removerEfeito(Player player) {
+    public void reverterEfeito(Player player) {
         // TODO: Criar alguma forma de chamar o execute do ataque novamente
     }
 }

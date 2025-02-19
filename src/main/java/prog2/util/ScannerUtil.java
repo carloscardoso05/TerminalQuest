@@ -6,12 +6,12 @@ import java.util.function.Function;
 public abstract class ScannerUtil {
     private static final Scanner sc = new Scanner(System.in);
 
-    private static String awaysValid(Object input) {
+    private static String alwaysValid(Object input) {
         return null;
     }
 
     public static String getString(String title) {
-        return getString(title, ScannerUtil::awaysValid);
+        return getString(title, ScannerUtil::alwaysValid);
     }
 
     public static String getString(String title, Function<String, String> isValid) {
@@ -28,7 +28,7 @@ public abstract class ScannerUtil {
     }
 
     public static int getInt(String title) {
-        return getInt(title, ScannerUtil::awaysValid);
+        return getInt(title, ScannerUtil::alwaysValid);
     }
 
     public static int getInt(String title, Function<Integer, String> isValid) {
@@ -49,7 +49,7 @@ public abstract class ScannerUtil {
     }
 
     public static double getDouble(String title) {
-        return getDouble(title, ScannerUtil::awaysValid);
+        return getDouble(title, ScannerUtil::alwaysValid);
     }
 
     public static double getDouble(String title, Function<Double, String> isValid) {

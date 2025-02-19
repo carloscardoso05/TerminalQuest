@@ -1,8 +1,11 @@
 package prog2.entities.actions.skills.arqueiro;
 
+import java.util.List;
+
 import prog2.entities.Player;
 import prog2.entities.actions.attack.DefaultAttack;
 import prog2.entities.actions.skills.Skill;
+import prog2.entities.enums.ResultadoAtaque;
 
 public class ataqueMultiplo extends Skill {
 
@@ -11,11 +14,19 @@ public class ataqueMultiplo extends Skill {
     }
 
     @Override
-    public void execute(Player origem, Player[] alvos) {
+    public ResultadoAtaque execute(Player origem, List<Player> alvos) {
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
+        ResultadoAtaque resultadoTotal = ResultadoAtaque.ERROU;
+
         for (Player alvo : alvos) {
-            new DefaultAttack().execute(origem, new Player[] {alvo});
+            final ResultadoAtaque resultado = new DefaultAttack().execute(origem, alvo);
+            if (resultado != ResultadoAtaque.ERROU && resultadoTotal != ResultadoAtaque.CRITICAL_HIT) {
+                resultadoTotal = resultado;
+            }
         }
+
+        // TODO retorna o melhor resultado
+        return resultadoTotal;
     }
 }

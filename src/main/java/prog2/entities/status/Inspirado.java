@@ -15,7 +15,7 @@ public class Inspirado extends Status{
     }
 
     @Override
-    public void removerEfeito(Player player) {
+    public void reverterEfeito(Player player) {
         player.setDestreza(player.getDestreza() - 2);
     }
 }

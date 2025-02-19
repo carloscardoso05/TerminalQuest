@@ -12,23 +12,34 @@ import java.util.List;
 import java.util.Optional;
 
 public class Log implements Serializable {
+    private static Log instance;
+
+    public static Log getInstance() {
+        if (instance == null) {
+            instance = new Log();
+        }
+        return instance;
+    }
+
     @Serial
-    private final static long  serialVersionUID = 1L;
+    private final static long serialVersionUID = 1L;
     private final List<String> lines = new ArrayList<>();
 
     private static String formatMessage(String message, LogType type) {
         return String.format("[ %s | %s ] %s\n", java.time.LocalDateTime.now(), type.name(), message);
     }
 
-    public void write(String message, LogType type) {
-        lines.add(formatMessage(message, type));
+    public void write(Object message, LogType type) {
+        final String formattedMessage = formatMessage(message.toString(), type);
+        System.out.printf(formattedMessage);
+        lines.add(formattedMessage);
     }
 
-    public void game(String message) {
+    public void game(Object message) {
         write(message, LogType.GAME);
     }
 
-    public void error(String message) {
+    public void error(Object message) {
         write(message, LogType.ERROR);
     }
 
