@@ -8,6 +8,7 @@ import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
 
 public class ataqueMultiplo extends Skill {
+    private static final int DANO_BASE = 6;
 
     public ataqueMultiplo() {
         super("Ataque múltiplo", 5);
@@ -20,7 +21,7 @@ public class ataqueMultiplo extends Skill {
         ResultadoAtaque resultadoTotal = ResultadoAtaque.ERROU;
 
         for (Player alvo : alvos) {
-            final ResultadoAtaque resultado = new DefaultAttack().execute(origem, alvo);
+            final ResultadoAtaque resultado = new DefaultAttack(DANO_BASE).execute(origem, alvo);
             if (resultado != ResultadoAtaque.ERROU && resultadoTotal != ResultadoAtaque.CRITICAL_HIT) {
                 resultadoTotal = resultado;
             }

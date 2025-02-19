@@ -9,6 +9,8 @@ import prog2.entities.enums.ResultadoAtaque;
 import prog2.entities.status.Atordoado;
 
 public class AtaqueAtordoante extends Skill {
+    private static final int DANO_BASE = 6;
+
     public AtaqueAtordoante() {
         super("Ataque atordoante", 5);
     }
@@ -19,6 +21,6 @@ public class AtaqueAtordoante extends Skill {
 
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
         alvo.getStatus().add(new Atordoado());
-        return new DefaultAttack().execute(origem, alvos);
+        return new DefaultAttack(DANO_BASE).execute(origem, alvos);
     }
 }

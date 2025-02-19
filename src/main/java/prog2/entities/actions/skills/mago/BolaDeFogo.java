@@ -8,7 +8,7 @@ import prog2.game.Dice;
 import java.util.List;
 
 public class BolaDeFogo extends Skill {
-    private static final int MAX_DANO = 10;
+    private static final int DANO_BASE = 10;
 
     public BolaDeFogo() {
         super("Bola de fogo", 10);
@@ -21,11 +21,10 @@ public class BolaDeFogo extends Skill {
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
         int ataque = Dice.rollAtaque();
-        // TODO: ATRIBUTO PARA BÔNUS NOS ATAQUES MÁGICOS
         ResultadoAtaque resultado = getResultadoAtaque(alvo, ataque, origem.getInteligencia());
 
         int bonus_nivel = (origem.getNivel() - 1) * 2;
-        int dano = Dice.rollDano(MAX_DANO + bonus_nivel, origem.getForcaDeAtaque(), resultado);
+        int dano = Dice.rollDano(DANO_BASE + bonus_nivel, origem.getForcaDeAtaque(), resultado);
         alvo.setVidaAtual(alvo.getVidaAtual() - dano);
 
         return resultado;
