@@ -7,8 +7,8 @@ import prog2.game.Dice;
 import java.util.List;
 
 public class DefaultAttack extends Attack {
-    public DefaultAttack() {
-        super("Ataque", 6);
+    public DefaultAttack(int danoBase) {
+        super("Ataque", danoBase);
     }
 
     @Override
