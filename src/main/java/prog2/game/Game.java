@@ -3,7 +3,7 @@ package prog2.game;
 import java.io.Serial;
 import java.io.Serializable;
 
-import prog2.entities.Player;
+import prog2.entities.players.Player;
 import prog2.entities.enums.ResultadoAtaque;
 import prog2.game.log.Log;
 import prog2.util.PlayerFactory;

@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import prog2.entities.Hero;
-import prog2.entities.Monster;
-import prog2.entities.Player;
+import prog2.entities.players.heroes.Hero;
+import prog2.entities.players.monsters.Monster;
+import prog2.entities.players.Player;
 import prog2.util.ToString;
 
 public class Turno implements Serializable {

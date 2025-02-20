@@ -1,4 +1,4 @@
-package prog2.entities;
+package prog2.entities.players.heroes;
 
 public class Arqueiro extends Hero {
     

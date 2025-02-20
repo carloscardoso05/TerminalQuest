@@ -2,7 +2,7 @@ package prog2.entities.actions.skills.bardo;
 
 import java.util.List;
 
-import prog2.entities.Player;
+import prog2.entities.players.Player;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
 import prog2.entities.status.Inspirado;
