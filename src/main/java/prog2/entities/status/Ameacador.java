@@ -1,6 +1,6 @@
 package prog2.entities.status;
 
-import prog2.entities.Player;
+import prog2.entities.players.Player;
 
 public class Ameacador extends Status {
     private static final int DURACAO_CHEIA = 2;

@@ -1,6 +1,6 @@
 package prog2.game;
 
-import prog2.entities.Hero;
+import prog2.entities.players.heroes.Hero;
 import prog2.game.log.Log;
 import prog2.util.PlayerFactory;
 import prog2.util.ToString;

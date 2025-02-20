@@ -2,7 +2,7 @@ package prog2.entities.actions.skills.guerreiro;
 
 import java.util.List;
 
-import prog2.entities.Player;
+import prog2.entities.players.Player;
 import prog2.entities.actions.attack.DefaultAttack;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;

@@ -1,4 +1,4 @@
-package prog2.entities;
+package prog2.entities.players.monsters;
 
 public class Rato extends Monster {
     public Rato() {

@@ -1,4 +1,4 @@
-package prog2.entities;
+package prog2.entities.players;
 
 import prog2.entities.actions.attack.Attack;
 import prog2.entities.actions.attack.DefaultAttack;

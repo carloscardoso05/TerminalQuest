@@ -1,8 +1,8 @@
 package prog2.game;
 
-import prog2.entities.Hero;
-import prog2.entities.Monster;
-import prog2.entities.Player;
+import prog2.entities.players.Player;
+import prog2.entities.players.heroes.Hero;
+import prog2.entities.players.monsters.Monster;
 import prog2.entities.status.Status;
 import prog2.game.log.Log;
 import prog2.util.PlayerFactory;

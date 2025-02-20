@@ -1,6 +1,6 @@
 package prog2.util;
 
-import prog2.entities.Player;
+import prog2.entities.players.Player;
 import prog2.entities.enums.ResultadoAtaque;
 
 import java.util.List;

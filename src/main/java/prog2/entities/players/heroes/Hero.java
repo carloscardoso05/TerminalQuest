@@ -1,4 +1,6 @@
-package prog2.entities;
+package prog2.entities.players.heroes;
+
+import prog2.entities.players.Player;
 
 import java.io.Serial;
 

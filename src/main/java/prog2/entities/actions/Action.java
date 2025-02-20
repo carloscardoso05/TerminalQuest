@@ -1,6 +1,6 @@
 package prog2.entities.actions;
 
-import prog2.entities.Player;
+import prog2.entities.players.Player;
 import prog2.entities.enums.ResultadoAtaque;
 import prog2.game.Dice;
 
