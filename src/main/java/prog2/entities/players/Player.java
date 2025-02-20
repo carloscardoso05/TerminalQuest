@@ -5,6 +5,8 @@ import prog2.entities.actions.attack.DefaultAttack;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
 import prog2.entities.status.Status;
+import prog2.game.log.Log;
+import prog2.util.PlayerIA;
 import prog2.util.ToString;
 
 import java.io.Serial;
@@ -16,6 +18,7 @@ public abstract class Player implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    public final PlayerIA ia = new PlayerIA(this);
     protected String nome;
     protected final int vidaMaxima;
     protected int vidaAtual;
@@ -27,6 +30,7 @@ public abstract class Player implements Serializable {
     protected int velocidade;
     protected int destreza;
     protected int nivel;
+    protected int exp;
     protected int ameaca;
     protected Attack ataque;
     protected final List<Skill> habilidades = new ArrayList<>();
@@ -48,17 +52,21 @@ public abstract class Player implements Serializable {
         this.velocidade = velocidade;
         this.destreza = destreza;
         this.nivel = nivel;
+        this.exp = 0;
         this.ameaca = ameaca;
         this.ataque = ataque;
     }
 
     // TODO implementar ataque do player
     public ResultadoAtaque realizarAtaque(Player alvo) {
-        return ataque.execute(this, List.of(alvo));
+        final ResultadoAtaque resultado = ataque.execute(this, List.of(alvo));
+        Log.getInstance()
+                .game(this.nome + " atacou " + alvo.nome + " com " + resultado);
+        return resultado;
     }
 
-    public boolean estaVivo() {
-        return vidaAtual > 0;
+    public boolean estaMorto() {
+        return vidaAtual <= 0;
     }
 
     public String getNome() {
@@ -120,6 +128,10 @@ public abstract class Player implements Serializable {
     public void setNivel(int nivel) {
         this.nivel = nivel;
     }
+
+    public int getExp() { return exp; }
+
+    public void setExp(int exp) { this.exp = exp; }
 
     public int getManaMaxima() {
         return manaMaxima;
