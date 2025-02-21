@@ -1,6 +1,6 @@
 package prog2.entities.actions.skills.monsters;
 
-import prog2.entities.Player;
+import prog2.entities.players.Player;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
 import prog2.entities.status.Envenenado;
@@ -16,6 +16,9 @@ public class envenenar extends Skill {
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
+        this.checarMana(origem.getManaAtual(), origem.getNome());
+        origem.setManaAtual(origem.getManaAtual() - this.getCusto());
+
         Player alvo = alvos.get(0);
         alvo.getStatus().add(new Envenenado());
         return ResultadoAtaque.ACERTOU;

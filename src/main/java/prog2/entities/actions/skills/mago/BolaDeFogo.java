@@ -16,10 +16,10 @@ public class BolaDeFogo extends Skill {
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
-        Player alvo = alvos.get(0);
-
+        this.checarMana(origem.getManaAtual(), origem.getNome());
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
+        Player alvo = alvos.get(0);
         int ataque = Dice.rollAtaque();
         ResultadoAtaque resultado = getResultadoAtaque(alvo, ataque, origem.getInteligencia());
 

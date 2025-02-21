@@ -16,10 +16,10 @@ public class ataqueMultiplo extends Skill {
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
+        this.checarMana(origem.getManaAtual(), origem.getNome());
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
         ResultadoAtaque resultadoTotal = ResultadoAtaque.ERROU;
-
         for (Player alvo : alvos) {
             final ResultadoAtaque resultado = new DefaultAttack(DANO_BASE).execute(origem, alvo);
             if (resultado != ResultadoAtaque.ERROU && resultadoTotal != ResultadoAtaque.CRITICAL_HIT) {

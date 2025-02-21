@@ -17,9 +17,10 @@ public class AtaqueAtordoante extends Skill {
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
-        Player alvo = alvos.get(0);
-
+        this.checarMana(origem.getManaAtual(), origem.getNome());
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
+
+        Player alvo = alvos.get(0);
         alvo.getStatus().add(new Atordoado());
         return new DefaultAttack(DANO_BASE).execute(origem, alvos);
     }
