@@ -2,7 +2,7 @@ package prog2.entities.actions.skills.guerreiro;
 
 import java.util.List;
 
-import prog2.entities.actions.attack.SkillAttack;
+import prog2.entities.actions.attack.Attack;
 import prog2.entities.players.Player;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
@@ -23,6 +23,6 @@ public class AtaqueAtordoante extends Skill {
         Player alvo = alvos.get(0);
         alvo.getStatus().add(new Atordoado());
         registrarLog(origem.getNome(), alvos);
-        return new SkillAttack(this.getName(), DANO_BASE, origem.getForcaDeAtaque()).execute(origem, alvos);
+        return new Attack(this.getName(), DANO_BASE, origem.getForcaDeAtaque()).execute(origem, alvos);
     }
 }

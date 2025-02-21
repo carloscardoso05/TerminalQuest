@@ -3,7 +3,7 @@ package prog2.entities.actions.skills.mago;
 import prog2.entities.players.Player;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
-import prog2.entities.actions.attack.SkillAttack;
+import prog2.entities.actions.attack.Attack;
 
 import java.util.List;
 import prog2.entities.status.Queimado;
@@ -21,7 +21,7 @@ public class BolaDeFogo extends Skill {
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
         Player alvo = alvos.get(0);
-        ResultadoAtaque resultado = new SkillAttack(this.getName(), DANO_BASE, origem.getInteligencia()).execute(origem, alvos);
+        ResultadoAtaque resultado = new Attack(this.getName(), DANO_BASE, origem.getInteligencia()).execute(origem, alvos);
         if (resultado == ResultadoAtaque.CRITICAL_HIT) {
             alvo.getStatus().add(new Queimado());
         }
