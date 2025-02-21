@@ -2,8 +2,8 @@ package prog2.entities.actions.skills.ladino;
 
 import java.util.List;
 
+import prog2.entities.actions.attack.SkillAttack;
 import prog2.entities.players.Player;
-import prog2.entities.actions.attack.DefaultAttack;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
 import prog2.entities.status.Escondido;
@@ -27,6 +27,7 @@ public class AtaqueEscondido extends Skill {
             return ResultadoAtaque.ERROU; // TODO rever isso aqui
         }
 //        Segundo turno: atacar
-        return new DefaultAttack(DANO_BASE).execute(origem, alvos);
+        registrarLog(origem.getNome(), alvos);
+        return new SkillAttack(this.getName(), DANO_BASE, origem.getDestreza()).execute(origem, alvos);
     }
 }

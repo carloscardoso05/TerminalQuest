@@ -3,9 +3,10 @@ package prog2.entities.actions.skills.mago;
 import prog2.entities.players.Player;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
-import prog2.game.Dice;
+import prog2.entities.actions.attack.SkillAttack;
 
 import java.util.List;
+import prog2.entities.status.Queimado;
 
 public class BolaDeFogo extends Skill {
     private static final int DANO_BASE = 10;
@@ -20,13 +21,11 @@ public class BolaDeFogo extends Skill {
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
         Player alvo = alvos.get(0);
-        int ataque = Dice.rollAtaque();
-        ResultadoAtaque resultado = getResultadoAtaque(alvo, ataque, origem.getInteligencia());
-
-        int bonus_nivel = (origem.getNivel() - 1) * 2;
-        int dano = Dice.rollDano(DANO_BASE + bonus_nivel, origem.getForcaDeAtaque(), resultado);
-        alvo.setVidaAtual(alvo.getVidaAtual() - dano);
-
+        ResultadoAtaque resultado = new SkillAttack(this.getName(), DANO_BASE, origem.getInteligencia()).execute(origem, alvos);
+        if (resultado == ResultadoAtaque.CRITICAL_HIT) {
+            alvo.getStatus().add(new Queimado());
+        }
+        registrarLog(origem.getNome(), alvos);
         return resultado;
     }
 }
