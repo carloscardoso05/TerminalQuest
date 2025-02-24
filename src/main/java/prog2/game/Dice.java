@@ -1,15 +1,13 @@
 package prog2.game;
 
-import java.util.Random;
-
 import prog2.entities.enums.ResultadoAtaque;
+import prog2.util.RandomSingleton;
 
 public class Dice {
     public static final int CRIT_ROLL = 20;
 
     private static int roll(int numLados) {
-        Random rand = new Random();
-        return rand.nextInt(1, numLados + 1);
+        return RandomSingleton.getInstance().nextInt(1, numLados + 1);
     }
 
     public static int rollDice(int numLados, int bonus) {
