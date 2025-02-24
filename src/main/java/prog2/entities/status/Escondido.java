@@ -2,6 +2,7 @@ package prog2.entities.status;
 
 import prog2.entities.players.Player;
 import prog2.entities.actions.skills.ladino.AtaqueEscondido;
+import prog2.game.log.Log;
 import prog2.util.exceptions.ImpedeAcao;
 
 public class Escondido extends Status {
@@ -13,6 +14,7 @@ public class Escondido extends Status {
 
     @Override
     public void aplicarEfeito(Player player) throws ImpedeAcao {
+        Log.getInstance().game(player.getNome() + " não pode atacar essa rodada pois está " + this.getNome());
         throw new ImpedeAcao();
     }
 

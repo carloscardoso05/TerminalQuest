@@ -1,7 +1,6 @@
 package prog2.entities.players;
 
 import prog2.entities.actions.attack.Attack;
-import prog2.entities.actions.attack.DefaultAttack;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
 import prog2.entities.status.Status;
@@ -36,7 +35,7 @@ public abstract class Player implements Serializable {
     protected final List<Status> status = new ArrayList<>();
 
     public Player(String nome, int vidaMaxima, int manaMaxima, int forcaDeAtaque, int inteligencia, int defesa, int velocidade, int destreza, int nivel, int ameaca, Skill habilidade) {
-        this(nome, vidaMaxima, manaMaxima, forcaDeAtaque, inteligencia, defesa, velocidade, destreza, nivel, ameaca, new DefaultAttack(), habilidade);
+        this(nome, vidaMaxima, manaMaxima, forcaDeAtaque, inteligencia, defesa, velocidade, destreza, nivel, ameaca, new Attack("Ataque", 6, forcaDeAtaque), habilidade);
     }
 
     public Player(String nome, int vidaMaxima, int manaMaxima, int forcaDeAtaque, int inteligencia, int defesa, int velocidade, int destreza, int nivel, int ameaca, Attack ataque, Skill habilidade) {

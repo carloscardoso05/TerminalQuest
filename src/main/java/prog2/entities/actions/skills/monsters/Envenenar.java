@@ -1,15 +1,17 @@
-package prog2.entities.actions.skills.bardo;
-
-import java.util.List;
+package prog2.entities.actions.skills.monsters;
 
 import prog2.entities.players.Player;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
-import prog2.entities.status.Inspirado;
+import prog2.entities.status.Envenenado;
 
-public class Inspiracao extends Skill {
-    public Inspiracao() {
-        super("Inspiração de Bardo", 5);
+import java.util.List;
+
+public class Envenenar extends Skill {
+
+
+    public Envenenar() {
+        super("Envenenar", 5);
     }
 
     @Override
@@ -18,7 +20,7 @@ public class Inspiracao extends Skill {
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
         Player alvo = alvos.get(0);
-        alvo.getStatus().add(new Inspirado());
+        alvo.getStatus().add(new Envenenado());
         registrarLog(origem.getNome(), alvos);
         return ResultadoAtaque.ACERTOU;
     }

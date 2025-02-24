@@ -16,11 +16,13 @@ public class Cura extends Skill {
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
-        Player alvo = alvos.get(0);
-
+        this.checarMana(origem.getManaAtual(), origem.getNome());
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
+
+        Player alvo = alvos.get(0);
         int cura = Dice.rollDice(MAX_CURA);
         alvo.setVidaAtual(Math.min(alvo.getVidaAtual() + cura, alvo.getVidaMaxima()));
+        registrarLog(origem.getNome(), alvos);
         return ResultadoAtaque.ACERTOU;
     }
 }

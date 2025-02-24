@@ -22,6 +22,22 @@ public class Turno implements Serializable {
     private int turnNumber = 1;
     private int difficulty;
 
+    public int calcular_experiencia(List<? extends Player> players) {
+        int exp_factor = 20;
+        int exp = 0;
+        for (Player player : players) {
+            exp += player.getNivel() * exp_factor;
+        }
+        return exp;
+    }
+
+    public void aplicar_experiencia(List<? extends Player> players, int exp) {
+        for (Player player : players) {
+            player.setExp(player.getExp() + exp);
+            player.setNivel(player.getExp() / 100);
+        }
+    }
+
     public boolean todosMortos(List<? extends Player> players) {
         for (Player player : players) {
             if (!player.estaMorto())
@@ -35,8 +51,10 @@ public class Turno implements Serializable {
             Log.getInstance().game("Derrota. Todos os heróis morreram.");
             return false;
         }
-        if (todosMortos(getMonsters())) {
-            Log.getInstance().game("Vitória. Todos os monstros morreram.");
+        List<Monster> monsters = getMonsters();
+        if (todosMortos(monsters)) {
+            int exp = calcular_experiencia(monsters);
+            Log.getInstance().game("Vitória. Todos os monstros morreram. Heróis ganharam " + exp + "Exp.");
             return false;
         }
         return true;
@@ -45,10 +63,10 @@ public class Turno implements Serializable {
     public void nextTurn() {
         if (turnNumber == 1) {
             addPlayer(List.of(
-                    PlayerFactory.criarMonstroAleatorio("Monstro 1"),
-                    PlayerFactory.criarMonstroAleatorio("Monstro 2"),
-                    PlayerFactory.criarMonstroAleatorio("Monstro 3"),
-                    PlayerFactory.criarMonstroAleatorio("Monstro 4")
+                    PlayerFactory.criarMonstroAleatorio(difficulty),
+                    PlayerFactory.criarMonstroAleatorio(difficulty),
+                    PlayerFactory.criarMonstroAleatorio(difficulty),
+                    PlayerFactory.criarMonstroAleatorio(difficulty)
             ));
             organizaPlayersEmOrdemDeAcao();
         }

@@ -1,6 +1,7 @@
 package prog2.entities.status;
 
 import prog2.entities.players.Player;
+import prog2.game.log.Log;
 
 public class Ameacador extends Status {
     private static final int DURACAO_CHEIA = 2;
@@ -11,8 +12,10 @@ public class Ameacador extends Status {
     @Override
     public void aplicarEfeito(Player player) {
         // Duracao cheia - 1 já que a duração é decrementada antes da aplicação do efeito
-        if (this.getDuracaoRestante() == DURACAO_CHEIA - 1)
+        if (this.getDuracaoRestante() == DURACAO_CHEIA - 1) {
+            Log.getInstance().game(player.getNome() + " está " + this.getNome() + ", ganhando +2 no atributo ameaça");
             player.setAmeaca(player.getAmeaca() + 2);
+        }
     }
 
     @Override

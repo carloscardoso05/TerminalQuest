@@ -2,8 +2,8 @@ package prog2.entities.actions.skills.guerreiro;
 
 import java.util.List;
 
+import prog2.entities.actions.attack.Attack;
 import prog2.entities.players.Player;
-import prog2.entities.actions.attack.DefaultAttack;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
 import prog2.entities.status.Atordoado;
@@ -17,10 +17,12 @@ public class AtaqueAtordoante extends Skill {
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
-        Player alvo = alvos.get(0);
-
+        this.checarMana(origem.getManaAtual(), origem.getNome());
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
+
+        Player alvo = alvos.get(0);
         alvo.getStatus().add(new Atordoado());
-        return new DefaultAttack(DANO_BASE).execute(origem, alvos);
+        registrarLog(origem.getNome(), alvos);
+        return new Attack(this.getName(), DANO_BASE, origem.getForcaDeAtaque()).execute(origem, alvos);
     }
 }

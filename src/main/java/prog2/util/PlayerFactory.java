@@ -2,19 +2,18 @@ package prog2.util;
 
 import prog2.entities.players.Player;
 import prog2.entities.players.heroes.*;
-import prog2.entities.players.monsters.Monster;
-import prog2.entities.players.monsters.Rato;
+import prog2.entities.players.monsters.*;
 
 import java.util.Random;
 
 public abstract class PlayerFactory {
     private static final Random rd = new Random();
 
-    public static Player criarPlayerAleatorio(String nome) {
+    public static Player criarPlayerAleatorio(String nome, int nivel) {
         final int n = rd.nextInt(2);
         return switch (n) {
             case 0 -> criarHeroiAleatorio(nome);
-            case 1 -> criarMonstroAleatorio(nome);
+            case 1 -> criarMonstroAleatorio(nivel);
             default -> throw new IllegalArgumentException("Tipo de jogador inválido. Valor: " + n);
         };
     }
@@ -32,7 +31,14 @@ public abstract class PlayerFactory {
         };
     }
 
-    public static Monster criarMonstroAleatorio(String nome) {
-        return new Rato(nome);
+    public static Monster criarMonstroAleatorio(int nivel) {
+        final int n = rd.nextInt(4);
+        return switch (n) {
+            case 0 -> new Minion(nivel);
+            case 1 -> new Coruja(nivel);
+            case 2 -> new Piton(nivel);
+            case 3 -> new Pinguim(nivel);
+            default -> throw new IllegalArgumentException("Classe de monstro inválida. Valor: " + n);
+        };
     }
 }

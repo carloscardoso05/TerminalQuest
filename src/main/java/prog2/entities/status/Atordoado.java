@@ -2,6 +2,7 @@ package prog2.entities.status;
 
 import prog2.entities.players.Player;
 import prog2.util.exceptions.ImpedeAcao;
+import prog2.game.log.Log;
 
 public class Atordoado extends Status {
     public Atordoado() {
@@ -10,6 +11,7 @@ public class Atordoado extends Status {
 
     @Override
     public void aplicarEfeito(Player player) throws ImpedeAcao {
+        Log.getInstance().game(player.getNome() + " não pode atacar essa rodada pois está " + this.getNome());
         throw new ImpedeAcao();
     }
 
