@@ -6,7 +6,6 @@ import prog2.entities.players.monsters.Monster;
 import prog2.entities.status.Status;
 import prog2.game.log.Log;
 import prog2.util.PlayerFactory;
-import prog2.util.ToString;
 import prog2.util.exceptions.ImpedeAcao;
 
 import java.io.Serial;
@@ -137,6 +136,6 @@ public class Turno implements Serializable {
 
     @Override
     public String toString() {
-        return ToString.fromGetters(this);
+        return "Turno %s - %s".formatted(getTurnNumber(), getPlayers());
     }
 }

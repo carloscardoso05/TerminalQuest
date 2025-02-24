@@ -33,6 +33,6 @@ public abstract class PlayerFactory {
     }
 
     public static Monster criarMonstroAleatorio(String nome) {
-        return new Rato();
+        return new Rato(nome);
     }
 }

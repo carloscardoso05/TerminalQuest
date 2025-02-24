@@ -7,7 +7,6 @@ import prog2.entities.enums.ResultadoAtaque;
 import prog2.entities.status.Status;
 import prog2.game.log.Log;
 import prog2.util.PlayerIA;
-import prog2.util.ToString;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -33,14 +32,14 @@ public abstract class Player implements Serializable {
     protected int exp;
     protected int ameaca;
     protected Attack ataque;
-    protected final List<Skill> habilidades = new ArrayList<>();
+    protected final Skill habilidade;
     protected final List<Status> status = new ArrayList<>();
 
-    public Player(String nome, int vidaMaxima, int manaMaxima, int forcaDeAtaque, int inteligencia, int defesa, int velocidade, int destreza, int nivel, int ameaca) {
-        this(nome, vidaMaxima, manaMaxima, forcaDeAtaque, inteligencia, defesa, velocidade, destreza, nivel, ameaca, new DefaultAttack());
+    public Player(String nome, int vidaMaxima, int manaMaxima, int forcaDeAtaque, int inteligencia, int defesa, int velocidade, int destreza, int nivel, int ameaca, Skill habilidade) {
+        this(nome, vidaMaxima, manaMaxima, forcaDeAtaque, inteligencia, defesa, velocidade, destreza, nivel, ameaca, new DefaultAttack(), habilidade);
     }
 
-    public Player(String nome, int vidaMaxima, int manaMaxima, int forcaDeAtaque, int inteligencia, int defesa, int velocidade, int destreza, int nivel, int ameaca, Attack ataque) {
+    public Player(String nome, int vidaMaxima, int manaMaxima, int forcaDeAtaque, int inteligencia, int defesa, int velocidade, int destreza, int nivel, int ameaca, Attack ataque, Skill habilidade) {
         this.nome = nome;
         this.vidaMaxima = vidaMaxima;
         this.vidaAtual = vidaMaxima;
@@ -55,13 +54,12 @@ public abstract class Player implements Serializable {
         this.exp = 0;
         this.ameaca = ameaca;
         this.ataque = ataque;
+        this.habilidade = habilidade;
     }
 
     // TODO implementar ataque do player
     public ResultadoAtaque realizarAtaque(Player alvo) {
         final ResultadoAtaque resultado = ataque.execute(this, List.of(alvo));
-        Log.getInstance()
-                .game(this.nome + " atacou " + alvo.nome + " com " + resultado);
         return resultado;
     }
 
@@ -169,8 +167,8 @@ public abstract class Player implements Serializable {
         this.ataque = ataque;
     }
 
-    public List<Skill> getHabilidades() {
-        return habilidades;
+    public Skill getHabilidade() {
+        return habilidade;
     }
 
     public List<Status> getStatus() {
@@ -179,6 +177,6 @@ public abstract class Player implements Serializable {
 
     @Override
     public String toString() {
-        return ToString.fromGetters(this);
+        return "[%s %d/%d]".formatted(getNome(), getVidaAtual(), getVidaMaxima());
     }
 }

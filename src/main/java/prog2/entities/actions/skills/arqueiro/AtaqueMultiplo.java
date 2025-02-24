@@ -7,10 +7,10 @@ import prog2.entities.actions.attack.DefaultAttack;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
 
-public class ataqueMultiplo extends Skill {
+public class AtaqueMultiplo extends Skill {
     private static final int DANO_BASE = 6;
 
-    public ataqueMultiplo() {
+    public AtaqueMultiplo() {
         super("Ataque múltiplo", 5);
     }
 

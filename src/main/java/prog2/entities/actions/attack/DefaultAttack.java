@@ -7,7 +7,9 @@ import prog2.game.Dice;
 import java.util.List;
 
 public class DefaultAttack extends Attack {
-    public DefaultAttack() { super("Ataque", 0); }
+    public DefaultAttack() {
+        super("Ataque", 0);
+    }
 
     public DefaultAttack(int danoBase) {
         super("Ataque", danoBase);
@@ -22,7 +24,7 @@ public class DefaultAttack extends Attack {
         ResultadoAtaque resultado = getResultadoAtaque(alvo, ataque, bonus);
 
         int bonus_nivel = (origem.getNivel() - 1) * 2;
-        int dano = Dice.rollDano(danoBase + bonus_nivel, origem.getForcaDeAtaque(), resultado);
+        int dano = Dice.rollDano(Math.max(danoBase + bonus_nivel, 2), origem.getForcaDeAtaque(), resultado);
         alvo.setVidaAtual(alvo.getVidaAtual() - dano);
         return resultado;
     }
