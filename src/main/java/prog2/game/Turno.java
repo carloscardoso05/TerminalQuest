@@ -46,7 +46,7 @@ public class Turno implements Serializable {
         for (Hero player : players) {
             player.setExp(player.getExp() + exp);
             int newLevel = (100 * (int) Math.pow(2, player.getNivel() - 1));
-            if (player.getExp() > newLevel) {
+            if (player.getExp() > newLevel && !player.estaMorto()) {
                 player.setNivel(player.getNivel() + 1);
                 player.subirNivel();
             }
@@ -74,7 +74,8 @@ public class Turno implements Serializable {
             int exp = calcular_experiencia(monsters);
             aplicar_experiencia(heroes, exp);
             for (Hero hero : heroes) {
-                hero.recuperarPontos();
+                if (!hero.estaMorto())
+                    hero.recuperarPontos();
             }
             Log.getInstance().game("Vitória. Todos os monstros morreram. Heróis ganharam " + exp + "Exp.");
             return false;
