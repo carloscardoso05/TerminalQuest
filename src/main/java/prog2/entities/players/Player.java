@@ -1,5 +1,6 @@
 package prog2.entities.players;
 
+import org.fusesource.jansi.Ansi;
 import prog2.entities.actions.attack.Attack;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
@@ -83,7 +84,7 @@ public abstract class Player implements Serializable {
     }
 
     public void setVidaAtual(int vidaAtual) {
-        this.vidaAtual = vidaAtual;
+        this.vidaAtual = Math.max(vidaAtual, 0);
     }
 
     public int getForcaDeAtaque() {
@@ -126,9 +127,13 @@ public abstract class Player implements Serializable {
         this.nivel = nivel;
     }
 
-    public int getExp() { return exp; }
+    public int getExp() {
+        return exp;
+    }
 
-    public void setExp(int exp) { this.exp = exp; }
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
 
     public int getManaMaxima() {
         return manaMaxima;
@@ -176,6 +181,8 @@ public abstract class Player implements Serializable {
 
     @Override
     public String toString() {
-        return "[%s %d/%d]".formatted(getNome(), getVidaAtual(), getVidaMaxima());
+        if (estaMorto())
+            return Ansi.ansi().fgRed().a("%s (MORTO)").reset().toString().formatted(getNome());
+        return "%s %d/%d".formatted(getNome(), getVidaAtual(), getVidaMaxima());
     }
 }

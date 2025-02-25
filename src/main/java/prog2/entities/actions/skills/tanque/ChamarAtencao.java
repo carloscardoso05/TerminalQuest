@@ -14,6 +14,7 @@ public class ChamarAtencao extends Skill {
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
+        if (!alvos.isEmpty()) throw new IllegalArgumentException("Esta habilidade não aceita alvos.");
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
         origem.getStatus().add(new Ameacador());
         return ResultadoAtaque.ACERTOU;

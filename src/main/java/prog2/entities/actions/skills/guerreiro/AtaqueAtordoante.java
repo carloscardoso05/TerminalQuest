@@ -17,12 +17,14 @@ public class AtaqueAtordoante extends Skill {
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
-        this.checarMana(origem.getManaAtual(), origem.getNome());
+        if (alvos.size() != 1) throw new IllegalArgumentException("Esta habilidade aceita apenas um alvo.");
+
+        this.checarMana(origem.getManaAtual(), origem);
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
         Player alvo = alvos.get(0);
         alvo.getStatus().add(new Atordoado());
-        registrarLog(origem.getNome(), alvos);
+        registrarLog(alvos);
         return new Attack(this.getName(), DANO_BASE, origem.getForcaDeAtaque()).execute(origem, alvos);
     }
 }

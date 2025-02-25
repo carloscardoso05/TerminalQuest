@@ -21,13 +21,13 @@ public class AtaqueEscondido extends Skill {
         Escondido statusEscondido = new Escondido(alvo);
 //        Primeiro turno: se esconder
         if (!origem.getStatus().contains(statusEscondido)) {
-            this.checarMana(origem.getManaAtual(), origem.getNome());
+            this.checarMana(origem.getManaAtual(), origem);
             origem.setManaAtual(origem.getManaAtual() - this.getCusto());
             origem.getStatus().add(statusEscondido);
             return ResultadoAtaque.ERROU; // TODO rever isso aqui
         }
 //        Segundo turno: atacar
-        registrarLog(origem.getNome(), alvos);
+        registrarLog(alvos);
         return new Attack(this.getName(), DANO_BASE, origem.getDestreza()).execute(origem, alvos);
     }
 }

@@ -41,4 +41,18 @@ public abstract class PlayerFactory {
             default -> throw new IllegalArgumentException("Classe de monstro inválida. Valor: " + n);
         };
     }
+
+    public static Monster criarMinion(int nivel) {
+        return new Minion(nivel);
+    }
+
+    public static Monster criarMonstroChefeAleatorio(int nivel) {
+        final int n = rd.nextInt(3);
+        return switch (n) {
+            case 0 -> new Coruja(nivel);
+            case 1 -> new Piton(nivel);
+            case 2 -> new Pinguim(nivel);
+            default -> throw new IllegalArgumentException("Classe de monstro inválida. Valor: " + n);
+        };
+    }
 }

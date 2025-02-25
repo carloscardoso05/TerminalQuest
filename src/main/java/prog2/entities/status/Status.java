@@ -1,5 +1,6 @@
 package prog2.entities.status;
 
+import org.fusesource.jansi.Ansi;
 import prog2.entities.players.Player;
 import prog2.util.exceptions.ImpedeAcao;
 
@@ -32,4 +33,9 @@ public abstract class Status {
     }
 
     protected abstract void reverterEfeito(Player player);
+
+    @Override
+    public String toString() {
+        return Ansi.ansi().fgRgb(0xcb0072).a(nome).reset().toString();
+    }
 }

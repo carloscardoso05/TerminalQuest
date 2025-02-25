@@ -15,15 +15,15 @@ public class PenasDeAco extends Skill{
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
-        super.checarMana(origem.getManaAtual(), origem.getNome());
+        super.checarMana(origem.getManaAtual(), origem);
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
         Player alvo = alvos.get(0);
-        ResultadoAtaque resultado = new Attack("Penas de aço", 8, origem.getForcaDeAtaque()).execute(origem, alvos);
+        ResultadoAtaque resultado = new Attack("Penas de aço", 8, origem.getForcaDeAtaque()).execute(origem, List.of(alvo));
         if (resultado == ResultadoAtaque.CRITICAL_HIT) {
             alvo.getStatus().add(new Atordoado());
         }
-        registrarLog(origem.getNome(), alvos);
+        registrarLog(alvos);
         return resultado;
     }
 }

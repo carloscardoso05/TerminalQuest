@@ -16,7 +16,7 @@ public class AtaqueMultiplo extends Skill {
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
-        this.checarMana(origem.getManaAtual(), origem.getNome());
+        this.checarMana(origem.getManaAtual(), origem);
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
         ResultadoAtaque resultadoTotal = ResultadoAtaque.ERROU;
@@ -28,7 +28,7 @@ public class AtaqueMultiplo extends Skill {
         }
 
         // TODO retorna o melhor resultado
-        this.registrarLog(origem.getNome(), alvos);
+        this.registrarLog(alvos);
         return resultadoTotal;
     }
 }

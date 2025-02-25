@@ -14,7 +14,7 @@ public class Escondido extends Status {
 
     @Override
     public void aplicarEfeito(Player player) throws ImpedeAcao {
-        Log.getInstance().game(player.getNome() + " não pode atacar essa rodada pois está " + this.getNome());
+        Log.getInstance().game(player + " não pode atacar essa rodada pois está " + this);
         throw new ImpedeAcao();
     }
 

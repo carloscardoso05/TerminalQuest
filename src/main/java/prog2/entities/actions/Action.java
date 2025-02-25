@@ -1,5 +1,6 @@
 package prog2.entities.actions;
 
+import org.fusesource.jansi.Ansi;
 import prog2.entities.players.Player;
 import prog2.entities.enums.ResultadoAtaque;
 import prog2.game.Dice;
@@ -30,5 +31,10 @@ public abstract class Action {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return Ansi.ansi().fgRgb(0xcb0072).a(name).reset().toString();
     }
 }

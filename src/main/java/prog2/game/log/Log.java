@@ -30,18 +30,21 @@ public class Log implements Serializable {
     private final List<String> lines = new ArrayList<>();
 
     private static String formatMessage(String message, LogType type) {
-        return String.format("[ %s | %s ] %s\n", java.time.LocalDateTime.now(), type.name(), message);
+//        return String.format("[ %s | %s ] %s\n", java.time.LocalDateTime.now(), type.name(), message);
+        return message + "\n";
     }
 
     public void write(Object message, LogType type) {
+        if (message == null) {
+            return;
+        }
         final String formattedMessage = formatMessage(message.toString(), type);
         System.out.printf(formattedMessage);
         lines.add(formattedMessage);
     }
 
     public void action(Player origem, List<Player> alvos, Action acao, ResultadoAtaque resultado) {
-        final String msg = "%s usou %s em %s. Resultado: %s".formatted(origem.getNome(), acao.getClass()
-                .getSimpleName(), alvos, resultado.name());
+        final String msg = "%s usou %s em %s. Resultado: %s".formatted(origem, acao, alvos, resultado.name());
         game(msg);
     }
 

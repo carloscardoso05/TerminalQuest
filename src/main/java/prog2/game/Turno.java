@@ -1,5 +1,6 @@
 package prog2.game;
 
+import org.fusesource.jansi.Ansi;
 import prog2.entities.players.Player;
 import prog2.entities.players.heroes.Hero;
 import prog2.entities.players.monsters.Monster;
@@ -63,10 +64,10 @@ public class Turno implements Serializable {
     public void nextTurn() {
         if (turnNumber == 1) {
             addPlayer(List.of(
-                    PlayerFactory.criarMonstroAleatorio(difficulty),
-                    PlayerFactory.criarMonstroAleatorio(difficulty),
-                    PlayerFactory.criarMonstroAleatorio(difficulty),
-                    PlayerFactory.criarMonstroAleatorio(difficulty)
+                    PlayerFactory.criarMonstroChefeAleatorio(difficulty),
+                    PlayerFactory.criarMinion(difficulty),
+                    PlayerFactory.criarMinion(difficulty),
+                    PlayerFactory.criarMinion(difficulty)
             ));
             organizaPlayersEmOrdemDeAcao();
         }
@@ -75,13 +76,15 @@ public class Turno implements Serializable {
             return;
         }
 
+        Log.getInstance().game(Ansi.ansi().bold().a("\n========== TURNO %d ==========".formatted(turnNumber)).reset());
+        Log.getInstance().game("Players: " + getPlayers());
         for (Player player : this.getPlayers()) {
             // Aplica os efeitos de status e verifica possibilidade de ação
             Iterator<Status> statusIter = player.getStatus().iterator();
             boolean acao = true;
             while (statusIter.hasNext()) {
                 Status status = statusIter.next();
-                if (status.getDuracaoRestante() < 1) {
+                    if (status.getDuracaoRestante() < 1) {
                     status.removerEfeito(player);
                     continue;
                 }
@@ -97,6 +100,8 @@ public class Turno implements Serializable {
             }
             player.ia.realizarAcao(players);
         }
+        System.out.println("Pressione Enter para ir para o próximo turno.");
+        new java.util.Scanner(System.in).nextLine();
         turnNumber += 1;
     }
 
@@ -150,10 +155,5 @@ public class Turno implements Serializable {
 
     public int getTurnNumber() {
         return turnNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "Turno %s - %s".formatted(getTurnNumber(), getPlayers());
     }
 }

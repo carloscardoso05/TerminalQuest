@@ -13,7 +13,7 @@ public class Ameacador extends Status {
     public void aplicarEfeito(Player player) {
         // Duracao cheia - 1 já que a duração é decrementada antes da aplicação do efeito
         if (this.getDuracaoRestante() == DURACAO_CHEIA - 1) {
-            Log.getInstance().game(player.getNome() + " está " + this.getNome() + ", ganhando +2 no atributo ameaça");
+            Log.getInstance().game(player + " está " + this + ", ganhando +2 no atributo ameaça");
             player.setAmeaca(player.getAmeaca() + 2);
         }
     }

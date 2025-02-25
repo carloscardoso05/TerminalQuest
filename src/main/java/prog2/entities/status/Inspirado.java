@@ -13,7 +13,7 @@ public class Inspirado extends Status{
     public void aplicarEfeito(Player player) {
         if (this.getDuracaoRestante() == DURACAO_CHEIA - 1) {
             player.setDestreza(player.getDestreza() + 2);
-            Log.getInstance().game(player.getNome() + " está " + this.getNome() + ", ganhando +2 no atributo destreza");
+            Log.getInstance().game(player + " está " + this + ", ganhando +2 no atributo destreza");
         }
     }
 
