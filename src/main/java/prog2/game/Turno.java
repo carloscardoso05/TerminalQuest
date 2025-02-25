@@ -79,6 +79,7 @@ public class Turno implements Serializable {
 
     public void nextTurn() {
         if (turnNumber == 1) {
+            // Descobre o nível de acordo com a dificuldade
             int mediaNivel = getMediaNivel(getHeroes());
             Difficulty dificuldade = Difficulty.values()[difficulty];
             switch (dificuldade) {
@@ -88,6 +89,7 @@ public class Turno implements Serializable {
                 case HARD:
                     mediaNivel++;
             }
+            // Cria os monstros
             addPlayer(PlayerFactory.criarMonstroAleatorio(mediaNivel));
             for (int i = 0; i < minionsCount; i++) {
                 addPlayer(PlayerFactory.criarMinionAleatorio(mediaNivel));
