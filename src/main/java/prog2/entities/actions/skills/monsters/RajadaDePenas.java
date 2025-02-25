@@ -8,9 +8,9 @@ import prog2.entities.status.Atordoado;
 
 import java.util.List;
 
-public class PenasDeAco extends Skill{
-    public PenasDeAco() {
-        super("Penas de Aço", 5);
+public class RajadaDePenas extends Skill{
+    public RajadaDePenas() {
+        super("Rajada de penas", 5);
     }
 
     @Override
@@ -19,7 +19,7 @@ public class PenasDeAco extends Skill{
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
         Player alvo = alvos.get(0);
-        ResultadoAtaque resultado = new Attack("Penas de aço", 8, origem.getForcaDeAtaque()).execute(origem, List.of(alvo));
+        ResultadoAtaque resultado = new Attack("Rajada de penas", 8, origem.getForcaDeAtaque()).execute(origem, List.of(alvo));
         if (resultado == ResultadoAtaque.CRITICAL_HIT) {
             alvo.getStatus().add(new Atordoado());
         }

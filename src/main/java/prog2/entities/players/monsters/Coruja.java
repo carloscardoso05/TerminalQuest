@@ -1,7 +1,7 @@
 package prog2.entities.players.monsters;
 
 import prog2.entities.actions.attack.Attack;
-import prog2.entities.actions.skills.monsters.PenasDeAco;
+import prog2.entities.actions.skills.monsters.RajadaDePenas;
 import prog2.game.Dice;
 
 public class Coruja extends Monster {
@@ -16,7 +16,7 @@ public class Coruja extends Monster {
                 0,
                 nivel,
                 12,
-              new PenasDeAco());
+              new RajadaDePenas());
             super.setAtaque(new Attack("Ataque com garras", 6, super.getForcaDeAtaque()));
     }
 }
