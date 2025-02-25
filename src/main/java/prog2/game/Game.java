@@ -6,6 +6,7 @@ import prog2.util.PlayerFactory;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game implements Serializable {
@@ -14,6 +15,7 @@ public class Game implements Serializable {
     private final Turno turno = new Turno();
     private final Log log = Log.getInstance();
     private final String name;
+    private static final int PARTY_SIZE = 4;
 
     public Game(String name) {
         this.name = name;
@@ -33,9 +35,10 @@ public class Game implements Serializable {
             turno.nextTurn();
         }
         while (turno.hasNextTurn()) {
+            System.out.println("Pressione Enter para ir para o próximo turno.");
+//            new java.util.Scanner(System.in).nextLine();
             turno.nextTurn();
         }
-
     }
 
     public List<Hero> createParty() {

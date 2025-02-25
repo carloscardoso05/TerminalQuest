@@ -8,6 +8,7 @@ import prog2.entities.players.monsters.Monster;
 import prog2.entities.status.Status;
 import prog2.game.log.Log;
 import prog2.util.PlayerFactory;
+import prog2.util.RandomSingleton;
 import prog2.util.exceptions.ImpedeAcao;
 
 import java.io.Serial;
@@ -42,16 +43,18 @@ public class Turno implements Serializable {
         return exp;
     }
 
-    public void aplicar_experiencia(List<Hero> players, int exp) {
-        for (Hero player : players) {
-            player.setExp(player.getExp() + exp);
-            int newLevel = (100 * (int) Math.pow(2, player.getNivel() - 1));
-            if (player.getExp() > newLevel && !player.estaMorto()) {
-                player.setNivel(player.getNivel() + 1);
-                player.subirNivel();
+    public void aplicar_experiencia(Hero player, int exp_base) {
+        int exp = exp_base + RandomSingleton.getInstance().nextInt(-10, 10);
+        player.setExp(player.getExp() + exp);
+        Log.getInstance().game(player.getNome() + " ganhou " + exp + " pontos de experiência!");
+
+        int newLevel = (80 * (int) Math.pow(2, player.getNivel() - 1));
+        if (player.getExp() >= newLevel && !player.estaMorto()) {
+            player.setNivel(player.getNivel() + 1);
+            player.subirNivel();
+            Log.getInstance().game(Ansi.ansi().fgBlue().a(player.getNome() + " Subiu para o nível " + player.getNivel() + "!").reset());
             }
         }
-    }
 
     public boolean todosMortos(List<? extends Player> players) {
         for (Player player : players) {
@@ -66,18 +69,21 @@ public class Turno implements Serializable {
         List<Monster> monsters = getMonsters();
 
         if (todosMortos(heroes)) {
-            Log.getInstance().game("Derrota. Todos os heróis morreram.");
+            Log.getInstance().game(Ansi.ansi().fgBrightRed().a("Derrota. Todos os heróis morreram.").reset());
             return false;
         }
         if (todosMortos(monsters)) {
+            Log.getInstance().game(Ansi.ansi().fgBrightYellow().a("Vitória. Todos os monstros morreram.").reset());
+            Log.getInstance().game(Ansi.ansi().bold().a("\n========== RESULTADOS ==========").reset());
             Minion.resetMinionsCount();
-            int exp = calcular_experiencia(monsters);
-            aplicar_experiencia(heroes, exp);
+            int exp_base = calcular_experiencia(monsters);
             for (Hero hero : heroes) {
-                if (!hero.estaMorto())
+                if (!hero.estaMorto()) {
+                    aplicar_experiencia(hero, exp_base);
                     hero.recuperarPontos();
+                }
             }
-            Log.getInstance().game("Vitória. Todos os monstros morreram. Heróis ganharam " + exp + "Exp.");
+            Log.getInstance().game(Ansi.ansi().bold().a("===============================\n").reset());
             return false;
         }
         return true;
@@ -110,6 +116,8 @@ public class Turno implements Serializable {
         Log.getInstance().game(Ansi.ansi().bold().a("\n========== TURNO %d ==========".formatted(turnNumber)).reset());
         Log.getInstance().game("Players: " + getPlayers());
         for (Player player : this.getPlayers()) {
+            if (player.estaMorto())
+                continue;
             // Aplica os efeitos de status e verifica possibilidade de ação
             Iterator<Status> statusIter = new ArrayList<>(player.getStatus()).iterator();
             boolean acao = true;
@@ -131,8 +139,6 @@ public class Turno implements Serializable {
             }
             player.ia.realizarAcao(players);
         }
-        System.out.println("Pressione Enter para ir para o próximo turno.");
-//        new java.util.Scanner(System.in).nextLine();
         turnNumber += 1;
     }
 
