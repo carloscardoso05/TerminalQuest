@@ -1,5 +1,7 @@
 package prog2.util;
 
+import org.fusesource.jansi.Ansi;
+
 import java.util.Scanner;
 import java.util.function.Function;
 
@@ -20,7 +22,7 @@ public abstract class ScannerUtil {
             final String str = sc.nextLine().trim();
             final String error = isValid.apply(str);
             if (error != null) {
-                System.out.println(error);
+                System.out.println(Ansi.ansi().fgBrightRed().a(error).reset());
                 continue;
             }
             return str;
@@ -38,7 +40,7 @@ public abstract class ScannerUtil {
                 final int input = Integer.parseInt(sc.nextLine().trim());
                 final String error = isValid.apply(input);
                 if (error != null) {
-                    System.out.println(error);
+                    System.out.println(Ansi.ansi().fgBrightRed().a(error).reset());
                     continue;
                 }
                 return input;

@@ -48,8 +48,8 @@ public class Turno implements Serializable {
         player.setExp(player.getExp() + exp);
         Log.getInstance().game(player.getNome() + " ganhou " + exp + " pontos de experiência!");
 
-        int newLevel = (80 * (int) Math.pow(2, player.getNivel() - 1));
-        if (player.getExp() >= newLevel && !player.estaMorto()) {
+        int newLevel = (100 * (int) Math.pow(2, player.getNivel() - 1));
+        if (player.getExp() >= newLevel) {
             player.setNivel(player.getNivel() + 1);
             player.subirNivel();
             Log.getInstance().game(Ansi.ansi().fgBlue().a(player.getNome() + " Subiu para o nível " + player.getNivel() + "!").reset());
