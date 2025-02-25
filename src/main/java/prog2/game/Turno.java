@@ -2,18 +2,21 @@ package prog2.game;
 
 import prog2.entities.players.Player;
 import prog2.entities.players.heroes.Hero;
+import prog2.entities.players.monsters.Minion;
 import prog2.entities.players.monsters.Monster;
 import prog2.entities.status.Status;
 import prog2.game.log.Log;
 import prog2.util.PlayerFactory;
 import prog2.util.ToString;
 import prog2.util.exceptions.ImpedeAcao;
+import prog2.game.Difficulty;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Turno implements Serializable {
@@ -22,6 +25,15 @@ public class Turno implements Serializable {
 
     private int turnNumber = 1;
     private int difficulty;
+    private static final int minionsCount = 3;
+
+    private int getMediaNivel(List<? extends Player> players) {
+        int media = 0;
+        for (Player player : players) {
+            media += player.getNivel();
+        }
+        return media / players.size();
+    }
 
     public int calcular_experiencia(List<? extends Player> players) {
         int exp_factor = 20;
@@ -35,7 +47,7 @@ public class Turno implements Serializable {
     public void aplicar_experiencia(List<? extends Player> players, int exp) {
         for (Player player : players) {
             player.setExp(player.getExp() + exp);
-            player.setNivel(player.getExp() / 100);
+            player.setNivel(player.getExp() / (100 * (int) Math.pow(2, player.getNivel() - 1)));
         }
     }
 
@@ -48,13 +60,16 @@ public class Turno implements Serializable {
     }
 
     public boolean hasNextTurn() {
-        if (todosMortos(getHeroes())) {
+        List<Hero> heroes = getHeroes();
+        List<Monster> monsters = getMonsters();
+
+        if (todosMortos(heroes)) {
             Log.getInstance().game("Derrota. Todos os heróis morreram.");
             return false;
         }
-        List<Monster> monsters = getMonsters();
         if (todosMortos(monsters)) {
             int exp = calcular_experiencia(monsters);
+            aplicar_experiencia(heroes, exp);
             Log.getInstance().game("Vitória. Todos os monstros morreram. Heróis ganharam " + exp + "Exp.");
             return false;
         }
@@ -63,12 +78,20 @@ public class Turno implements Serializable {
 
     public void nextTurn() {
         if (turnNumber == 1) {
-            addPlayer(List.of(
-                    PlayerFactory.criarMonstroAleatorio("Monstro 1"),
-                    PlayerFactory.criarMonstroAleatorio("Monstro 2"),
-                    PlayerFactory.criarMonstroAleatorio("Monstro 3"),
-                    PlayerFactory.criarMonstroAleatorio("Monstro 4")
-            ));
+            int mediaNivel = getMediaNivel(getHeroes());
+            Difficulty dificuldade = Difficulty.values()[difficulty];
+            switch (dificuldade) {
+                case EASY:
+                    mediaNivel = Math.max(1, mediaNivel - 1);
+                    break;
+                case HARD:
+                    mediaNivel++;
+            }
+            addPlayer(PlayerFactory.criarMonstroAleatorio(mediaNivel));
+            for (int i = 0; i < minionsCount; i++) {
+                addPlayer(PlayerFactory.criarMinionAleatorio(mediaNivel));
+            }
+            //TODO: coisar nomes dos minions
             organizaPlayersEmOrdemDeAcao();
         }
 
