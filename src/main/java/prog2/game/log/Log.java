@@ -6,8 +6,6 @@ import prog2.entities.players.Player;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.Serial;
-import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
@@ -15,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class Log implements Serializable {
+public class Log {
     private static Log instance;
 
     public static Log getInstance() {
@@ -25,8 +23,6 @@ public class Log implements Serializable {
         return instance;
     }
 
-    @Serial
-    private final static long serialVersionUID = 1L;
     private final List<String> lines = new ArrayList<>();
 
     private static String formatMessage(String message, LogType type) {
@@ -54,10 +50,6 @@ public class Log implements Serializable {
 
     public void game(Object message) {
         write(message, LogType.GAME);
-    }
-
-    public void error(Object message) {
-        write(message, LogType.ERROR);
     }
 
     public Optional<File> export() {

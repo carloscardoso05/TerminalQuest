@@ -26,7 +26,6 @@ public class AtaqueEscondido extends Skill {
             return ResultadoAtaque.ERROU; // TODO rever isso aqui
         }
 //        Segundo turno: atacar
-        registrarLog(alvos);
         return new Attack(this.getName(), DANO_BASE, origem.getDestreza()).execute(origem, alvos);
     }
 }

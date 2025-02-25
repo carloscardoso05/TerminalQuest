@@ -5,32 +5,16 @@ import prog2.entities.players.heroes.*;
 import prog2.game.log.Log;
 import prog2.util.ScannerUtil;
 
-import java.io.Serial;
-import java.io.Serializable;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class Game implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class Game {
     private final Turno turno = new Turno();
     private int qtdTurnos;
     private int qtdBatalhas;
-    private final Log log = Log.getInstance();
-    private final String name;
     private static final int PARTY_SIZE = 4;
-
-    public Game(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Turno getTurno() {
-        return turno;
-    }
 
     public void run() {
         if (turno.getTurnNumber() == 1) {
@@ -64,14 +48,19 @@ public class Game implements Serializable {
                                 + "Turnos jogados: %s\n".formatted(qtdTurnos)
                 ).reset()
         );
-        Log.getInstance().export();
+        final Optional<File> logFile = Log.getInstance().export();
+        logFile.ifPresentOrElse(
+                file -> System.out.println("Log salvo em: " + file.getAbsolutePath()),
+                () -> System.out.println("Erro ao salvar log")
+        );
     }
 
     public Difficulty getDificuldade() {
-        int dificuldade = ScannerUtil.getInt("Insira a dificuldade do jogo:\n" +
-                        "1. FÁCIL\n" +
-                        "2. MÉDIO\n" +
-                        "3. DIFÍCIL",
+        int dificuldade = ScannerUtil.getInt("""
+                        Insira a dificuldade do jogo:
+                        1. FÁCIL
+                        2. MÉDIO
+                        3. DIFÍCIL""",
                 input -> {
                     if (input < 1 || input > 3) {
                         return "insira uma opção válida";
@@ -87,13 +76,14 @@ public class Game implements Serializable {
         List<Integer> classes = new ArrayList<>();
 
         for (int i = 0; i < PARTY_SIZE; i++) {
-            int classe = ScannerUtil.getInt("Insira a classe do personagem\n" +
-                            "1. Arqueiro\n" +
-                            "2. Bardo\n" +
-                            "3. Guerreiro\n" +
-                            "4. Ladino\n" +
-                            "5. Mago\n" +
-                            "6. Tanque",
+            int classe = ScannerUtil.getInt("""
+                            Insira a classe do personagem
+                            1. Arqueiro
+                            2. Bardo
+                            3. Guerreiro
+                            4. Ladino
+                            5. Mago
+                            6. Tanque""",
                     input -> {
                         if (classes.contains(input)) {
                             return "classe já utilizada";

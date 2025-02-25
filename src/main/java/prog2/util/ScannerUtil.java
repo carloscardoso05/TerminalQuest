@@ -8,6 +8,7 @@ import java.util.function.Function;
 public abstract class ScannerUtil {
     private static final Scanner sc = new Scanner(System.in);
 
+    @SuppressWarnings("SameReturnValue")
     private static String alwaysValid(Object input) {
         return null;
     }
@@ -40,7 +41,10 @@ public abstract class ScannerUtil {
                 final int input = Integer.parseInt(sc.nextLine().trim());
                 final String error = isValid.apply(input);
                 if (error != null) {
-                    System.out.println(Ansi.ansi().fgBrightRed().a(error).reset());
+                    System.out.println(Ansi.ansi()
+                            .fgBrightRed()
+                            .a(error)
+                            .reset());
                     continue;
                 }
                 return input;
@@ -50,24 +54,4 @@ public abstract class ScannerUtil {
         }
     }
 
-    public static double getDouble(String title) {
-        return getDouble(title, ScannerUtil::alwaysValid);
-    }
-
-    public static double getDouble(String title, Function<Double, String> isValid) {
-        while (true) {
-            System.out.println(title);
-            try {
-                final double input = Double.parseDouble(sc.nextLine().trim());
-                final String error = isValid.apply(input);
-                if (error != null) {
-                    System.out.println(error);
-                    continue;
-                }
-                return input;
-            } catch (NumberFormatException e) {
-                System.out.println("Insira um número racional válido");
-            }
-        }
-    }
 }

@@ -11,7 +11,6 @@ import prog2.util.PlayerFactory;
 import prog2.util.RandomSingleton;
 import prog2.util.exceptions.ImpedeAcao;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,9 +18,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Turno implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
-
     private int turnNumber = 1;
     private Difficulty difficulty;
     private static final int minionsCount = 3;

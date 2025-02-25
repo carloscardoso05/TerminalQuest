@@ -24,7 +24,6 @@ public class AtaqueAtordoante extends Skill {
 
         Player alvo = alvos.get(0);
         alvo.getStatus().add(new Atordoado());
-        registrarLog(alvos);
         return new Attack(this.getName(), DANO_BASE, origem.getForcaDeAtaque()).execute(origem, alvos);
     }
 }

@@ -23,7 +23,6 @@ public class PenasDeAco extends Skill{
         if (resultado == ResultadoAtaque.CRITICAL_HIT) {
             alvo.getStatus().add(new Atordoado());
         }
-        registrarLog(alvos);
         return resultado;
     }
 }

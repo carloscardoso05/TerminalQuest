@@ -19,7 +19,6 @@ public class Inspiracao extends Skill {
 
         Player alvo = alvos.get(0);
         alvo.getStatus().add(new Inspirado());
-        registrarLog(alvos);
         return ResultadoAtaque.ACERTOU;
     }
 }

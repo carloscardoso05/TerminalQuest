@@ -21,7 +21,6 @@ public class Envenenar extends Skill {
 
         Player alvo = alvos.get(0);
         alvo.getStatus().add(new Envenenado());
-        registrarLog(alvos);
         return ResultadoAtaque.ACERTOU;
     }
 }

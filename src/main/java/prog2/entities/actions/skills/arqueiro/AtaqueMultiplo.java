@@ -27,8 +27,7 @@ public class AtaqueMultiplo extends Skill {
             }
         }
 
-        // TODO retorna o melhor resultado
-        this.registrarLog(alvos);
+        // retorna o melhor resultado
         return resultadoTotal;
     }
 }

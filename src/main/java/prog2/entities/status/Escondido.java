@@ -6,7 +6,7 @@ import prog2.game.log.Log;
 import prog2.util.exceptions.ImpedeAcao;
 
 public class Escondido extends Status {
-    private Player alvo;
+    private final Player alvo;
     public Escondido(Player alvo) {
         super("Escondido", 1);
         this.alvo = alvo;

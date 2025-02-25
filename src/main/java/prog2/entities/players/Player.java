@@ -5,18 +5,12 @@ import prog2.entities.actions.attack.Attack;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
 import prog2.entities.status.Status;
-import prog2.game.log.Log;
 import prog2.util.PlayerIA;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Player implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
-
+public abstract class Player {
     public final PlayerIA ia = new PlayerIA(this);
     protected String nome;
     protected int vidaMaxima;
@@ -62,8 +56,7 @@ public abstract class Player implements Serializable {
 
     // TODO implementar ataque do player
     public ResultadoAtaque realizarAtaque(Player alvo) {
-        final ResultadoAtaque resultado = ataque.execute(this, List.of(alvo));
-        return resultado;
+        return ataque.execute(this, List.of(alvo));
     }
 
     public boolean estaMorto() {

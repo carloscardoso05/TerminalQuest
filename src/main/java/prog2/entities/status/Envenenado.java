@@ -2,7 +2,6 @@ package prog2.entities.status;
 
 import prog2.entities.players.Player;
 import prog2.game.Dice;
-import prog2.util.exceptions.ImpedeAcao;
 import prog2.game.log.Log;
 
 public class Envenenado extends Status{
@@ -13,7 +12,7 @@ public class Envenenado extends Status{
     }
 
     @Override
-    public void aplicarEfeito(Player player) throws ImpedeAcao {
+    public void aplicarEfeito(Player player) {
         int dano = Dice.rollDice(DANO_MAX);
         player.setVidaAtual(Math.max(player.getVidaAtual() - dano, 0));
         Log.getInstance().game(player.getNome() + " tomou " + dano + " por estar " + this.getNome());

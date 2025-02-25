@@ -1,7 +1,6 @@
 package prog2.util;
 
 import prog2.entities.actions.Action;
-import prog2.entities.actions.attack.Attack;
 import prog2.entities.actions.skills.arqueiro.AtaqueMultiplo;
 import prog2.entities.actions.skills.bardo.Inspiracao;
 import prog2.entities.actions.skills.clerigo.Cura;
@@ -53,37 +52,38 @@ public class PlayerIA {
         }
     }
 
-    protected ResultadoAtaque usarAtaque(List<Player> players) {
+    protected void usarAtaque(List<Player> players) {
         final Player alvo = filtrarAlvos(players, player.getAtaque()).stream()
                 .findFirst()
                 .orElseThrow(SemAlvoDisponivelException::new);
         final ResultadoAtaque resultado = player.realizarAtaque(alvo);
         Log.getInstance().action(player, alvo, player.getAtaque(), resultado);
-        return resultado;
     }
 
-    protected ResultadoAtaque usarHabilidade(List<Player> players) {
+    protected void usarHabilidade(List<Player> players) {
         final List<Player> alvos = filtrarAlvos(players, player.getHabilidade());
         final ResultadoAtaque resultado = player.getHabilidade().execute(player, alvos);
         Log.getInstance().action(player, alvos, player.getHabilidade(), resultado);
-        return resultado;
     }
 
-    public ResultadoAtaque realizarAcao(List<Player> players) {
+    public void realizarAcao(List<Player> players) {
         while (true) {
             try {
                 if (player.getHabilidade() == null || player.getHabilidade().getCusto() > player.getManaAtual()) {
-                    return usarAtaque(players);
+                    usarAtaque(players);
+                    return;
                 }
                 final int tipoAcao = new Random().nextInt(3);
-                return switch (tipoAcao) {
+                switch (tipoAcao) {
                     case 0, 1 -> usarAtaque(players);
                     case 2 -> usarHabilidade(players);
-                    default -> throw new IllegalStateException("Unexpected value: " + tipoAcao);
-                };
+                    default ->
+                            throw new IllegalStateException("Unexpected value: " + tipoAcao);
+                }
+                return;
             } catch (SemAlvoDisponivelException e){
                 Log.getInstance().game("Sem alvo disponível para " + player);
-                return ResultadoAtaque.ERROU;
+                return;
             }
             catch (Exception ignored) {
             }

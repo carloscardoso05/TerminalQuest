@@ -25,7 +25,6 @@ public class BolaDeFogo extends Skill {
         if (resultado == ResultadoAtaque.CRITICAL_HIT) {
             alvo.getStatus().add(new Queimado());
         }
-        registrarLog(alvos);
         return resultado;
     }
 }
