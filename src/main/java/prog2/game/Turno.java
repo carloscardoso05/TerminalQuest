@@ -26,6 +26,10 @@ public class Turno implements Serializable {
     private Difficulty difficulty;
     private static final int minionsCount = 3;
 
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
     private int getMediaNivel(List<? extends Player> players) {
         int media = 0;
         for (Player player : players) {

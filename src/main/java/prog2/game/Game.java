@@ -34,6 +34,7 @@ public class Game implements Serializable {
 
     public void run() {
         if (turno.getTurnNumber() == 1) {
+            turno.setDifficulty(getDificuldade());
             turno.addPlayer(createParty());
             turno.nextTurn();
         }
@@ -42,6 +43,20 @@ public class Game implements Serializable {
 //            new java.util.Scanner(System.in).nextLine();
             turno.nextTurn();
         }
+    }
+
+    public Difficulty getDificuldade() {
+        int dificuldade = ScannerUtil.getInt("Insira a dificuldade do jogo:\n" +
+                        "1. FÁCIL\n" +
+                        "2. MÉDIO\n" +
+                        "3. DIFÍCIL",
+                input -> {
+                    if (input < 1 || input > 3) {
+                        return "insira uma opção válida";
+                    }
+                    return null;
+                });
+        return Difficulty.values()[dificuldade];
     }
 
     public List<Hero> createParty() {
