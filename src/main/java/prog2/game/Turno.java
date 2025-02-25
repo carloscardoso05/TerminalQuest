@@ -124,7 +124,7 @@ public class Turno implements Serializable {
             player.ia.realizarAcao(players);
         }
         System.out.println("Pressione Enter para ir para o próximo turno.");
-        new java.util.Scanner(System.in).nextLine();
+//        new java.util.Scanner(System.in).nextLine();
         turnNumber += 1;
     }
 
