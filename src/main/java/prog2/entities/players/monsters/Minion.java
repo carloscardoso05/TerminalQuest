@@ -5,8 +5,8 @@ import prog2.game.Dice;
 
 public class Minion extends Monster {
     private static int ratoCount = 0;
-    private static int goblinCount = 0;
-    private static int xundaCount = 0;
+    private static int formigaCount = 0;
+    private static int esquiloCount = 0;
 
     public Minion(int nivel) {
         super(null,
@@ -29,18 +29,18 @@ public class Minion extends Monster {
             super.setNome("Rato-" + ratoCount);
             break;
         case 2:
-            goblinCount++;
-            super.setNome("Goblin-" + goblinCount);
+            formigaCount++;
+            super.setNome("Formiga-" + formigaCount);
             break;
         case 3:
-            xundaCount++;
-            super.setNome("Xunda-" + xundaCount);
+            esquiloCount++;
+            super.setNome("Esquilo-" + esquiloCount);
         }
     }
 
     public static void resetMinionsCount() {
         ratoCount = 0;
-        goblinCount = 0;
-        xundaCount = 0;
+        formigaCount = 0;
+        esquiloCount = 0;
     }
 }

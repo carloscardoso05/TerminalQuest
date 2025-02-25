@@ -1,94 +1,269 @@
-[ 2025-02-25T09:48:55.401889400 | GAME ] 
+[ 2025-02-25T09:51:32.156530800 | GAME ] 
 ========== TURNO 1 ==========
 
-[ 2025-02-25T09:48:55.403870500 | GAME ] Players: [Ladino 10/10, Mago 8/8, Pinguim 13/13, Xunda-1 6/6, Rato-1 8/8, Guerreiro 12/12, Bardo 8/8, Goblin-1 7/7]
+[ 2025-02-25T09:51:32.158528400 | GAME ] Players: [Arqueiro 10/10, Guerreiro 12/12, Tanque 15/15, Rato-1 8/8, Xunda-1 8/8, Mago 8/8, Goblin-1 7/7, Goblin-2 8/8]
 
-[ 2025-02-25T09:48:55.409871500 | GAME ] Ladino 10/10 usou Ataque furtivo em [Pinguim 13/13]. Resultado: ERROU
+[ 2025-02-25T09:51:32.162612300 | GAME ] Arqueiro 10/10 usou Ataque em [Rato-1 (MORTO)]. Resultado: CRITICAL_HIT
 
-[ 2025-02-25T09:48:55.410888900 | GAME ] Mago 8/8 usou Ataque em [Pinguim 13/13]. Resultado: ERROU
+[ 2025-02-25T09:51:32.163567800 | GAME ] Guerreiro 12/12 usou Ataque em [Xunda-1 4/8]. Resultado: ACERTOU
 
-[ 2025-02-25T09:48:55.411896100 | GAME ] Pinguim 13/13 usou Congelar em [Ladino 10/10]. Resultado: ACERTOU
+[ 2025-02-25T09:51:32.163567800 | GAME ] Tanque 15/15 usou Ataque em [Xunda-1 (MORTO)]. Resultado: ACERTOU
 
-[ 2025-02-25T09:48:55.411896100 | GAME ] Xunda-1 6/6 usou Ataque em [Ladino 10/10]. Resultado: ERROU
+[ 2025-02-25T09:51:32.163567800 | GAME ] Mago 8/8 usou Bola de fogo em [Goblin-1 (MORTO)]. Resultado: ACERTOU
 
-[ 2025-02-25T09:48:55.411896100 | GAME ] Rato-1 8/8 usou Ataque em [Ladino 10/10]. Resultado: ERROU
+[ 2025-02-25T09:51:32.164527400 | GAME ] Goblin-2 8/8 usou Ataque em [Arqueiro 10/10]. Resultado: ERROU
 
-[ 2025-02-25T09:48:55.412895400 | GAME ] Guerreiro 12/12 usou Ataque em [Pinguim 13/13]. Resultado: ERROU
-
-[ 2025-02-25T09:48:55.412895400 | GAME ] Bardo 8/8 usou Ataque em [Pinguim 9/13]. Resultado: ACERTOU
-
-[ 2025-02-25T09:48:55.412895400 | GAME ] Goblin-1 7/7 usou Ataque em [Ladino 8/10]. Resultado: ACERTOU
-
-[ 2025-02-25T09:48:57.741652100 | GAME ] 
+[ 2025-02-25T09:51:36.941031100 | GAME ] 
 ========== TURNO 2 ==========
 
-[ 2025-02-25T09:48:57.742651900 | GAME ] Players: [Ladino 8/10, Mago 8/8, Pinguim 9/13, Xunda-1 6/6, Rato-1 8/8, Guerreiro 12/12, Bardo 8/8, Goblin-1 7/7]
+[ 2025-02-25T09:51:36.941998 | GAME ] Players: [Arqueiro 10/10, Guerreiro 12/12, Tanque 15/15, Rato-1 (MORTO), Xunda-1 (MORTO), Mago 8/8, Goblin-1 (MORTO), Goblin-2 8/8]
 
-[ 2025-02-25T09:48:57.748646500 | GAME ] Ladino 8/10 não pode atacar essa rodada pois está Escondido
+[ 2025-02-25T09:51:36.946999200 | GAME ] Arqueiro 10/10 usou Ataque múltiplo em [Goblin-2 3/8]. Resultado: ACERTOU
 
-[ 2025-02-25T09:48:57.748646500 | GAME ] Mago 8/8 usou Ataque em [Pinguim 9/13]. Resultado: ERROU
+[ 2025-02-25T09:51:36.948 | GAME ] Guerreiro 12/12 usou Ataque em [Goblin-2 (MORTO)]. Resultado: ACERTOU
 
-[ 2025-02-25T09:48:57.749647700 | GAME ] Pinguim 9/13 usou Mordida em [Ladino 5/10]. Resultado: ERROU
+[ 2025-02-25T09:51:36.948 | GAME ] Sem alvo disponível para Tanque 15/15
 
-[ 2025-02-25T09:48:57.749647700 | GAME ] Xunda-1 6/6 usou Ataque em [Ladino (MORTO)]. Resultado: ACERTOU
+[ 2025-02-25T09:51:36.948998400 | GAME ] Sem alvo disponível para Mago 8/8
 
-[ 2025-02-25T09:48:57.749647700 | GAME ] Rato-1 8/8 usou Ataque em [Mago 3/8]. Resultado: ACERTOU
+[ 2025-02-25T09:51:36.948998400 | GAME ] Vitória. Todos os monstros morreram.
 
-[ 2025-02-25T09:48:57.750646700 | GAME ] Guerreiro 12/12 usou Ataque em [Pinguim 9/13]. Resultado: ERROU
+[ 2025-02-25T09:51:36.948998400 | GAME ] 
+========== RESULTADOS ==========
 
-[ 2025-02-25T09:48:57.750646700 | GAME ] Bardo 8/8 usou Ataque em [Pinguim 8/13]. Resultado: ACERTOU
+[ 2025-02-25T09:51:36.955000900 | GAME ] Arqueiro ganhou 78 pontos de experiência!
 
-[ 2025-02-25T09:48:57.750646700 | GAME ] Goblin-1 7/7 usou Ataque em [Mago (MORTO)]. Resultado: ACERTOU
+[ 2025-02-25T09:51:36.956052300 | GAME ] Guerreiro ganhou 77 pontos de experiência!
 
-[ 2025-02-25T09:48:58.293433800 | GAME ] 
+[ 2025-02-25T09:51:36.956052300 | GAME ] Tanque ganhou 82 pontos de experiência!
+
+[ 2025-02-25T09:51:36.956052300 | GAME ] Mago ganhou 86 pontos de experiência!
+
+[ 2025-02-25T09:51:36.956052300 | GAME ] ===============================
+
+
+[ 2025-02-25T09:52:01.894650300 | GAME ] 
+========== TURNO 1 ==========
+
+[ 2025-02-25T09:52:01.894650300 | GAME ] Players: [Mago 8/8, Goblin-2 8/8, Goblin-1 7/7, Píton 13/13, Rato-1 6/6, Tanque 15/15, Guerreiro 12/12, Arqueiro 10/10]
+
+[ 2025-02-25T09:52:01.895656900 | GAME ] Mago 8/8 usou Ataque em [Goblin-2 7/8]. Resultado: ACERTOU
+
+[ 2025-02-25T09:52:01.895656900 | GAME ] Goblin-2 7/8 usou Ataque em [Mago 8/8]. Resultado: ERROU
+
+[ 2025-02-25T09:52:01.895656900 | GAME ] Goblin-1 7/7 usou Ataque em [Mago 6/8]. Resultado: ACERTOU
+
+[ 2025-02-25T09:52:01.898652500 | GAME ] Píton 13/13 usou Envenenar em [Mago 6/8]. Resultado: ACERTOU
+
+[ 2025-02-25T09:52:01.899652700 | GAME ] Rato-1 6/6 usou Ataque em [Mago 6/8]. Resultado: ERROU
+
+[ 2025-02-25T09:52:01.899652700 | GAME ] Tanque 15/15 usou Ataque em [Goblin-2 4/8]. Resultado: ACERTOU
+
+[ 2025-02-25T09:52:01.900654800 | GAME ] Guerreiro 12/12 usou Ataque atordoante em [Goblin-2 (MORTO)]. Resultado: ACERTOU
+
+[ 2025-02-25T09:52:01.900654800 | GAME ] Arqueiro 10/10 usou Ataque em [Goblin-1 4/7]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:23.285398500 | GAME ] 
+========== TURNO 2 ==========
+
+[ 2025-02-25T09:53:23.286402400 | GAME ] Players: [Mago 6/8, Goblin-2 (MORTO), Goblin-1 4/7, Píton 13/13, Rato-1 6/6, Tanque 15/15, Guerreiro 12/12, Arqueiro 10/10]
+
+[ 2025-02-25T09:53:23.293441 | GAME ] Mago tomou 3 por estar Envenenado
+
+[ 2025-02-25T09:53:23.293441 | GAME ] Mago 3/8 usou Ataque em [Goblin-1 2/7]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:23.293441 | GAME ] Goblin-1 2/7 usou Ataque em [Mago (MORTO)]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:23.294433200 | GAME ] Píton 13/13 usou Envenenar em [Tanque 15/15]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:23.294433200 | GAME ] Rato-1 6/6 usou Ataque em [Tanque 11/15]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:23.294433200 | GAME ] Tanque tomou 3 por estar Envenenado
+
+[ 2025-02-25T09:53:23.294433200 | GAME ] Tanque 8/15 usou Ataque em [Goblin-1 (MORTO)]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:23.295494300 | GAME ] Guerreiro 12/12 usou Ataque em [Píton 10/13]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:23.295494300 | GAME ] Arqueiro 10/10 usou Ataque em [Píton 10/13]. Resultado: ERROU
+
+[ 2025-02-25T09:53:24.125047800 | GAME ] 
 ========== TURNO 3 ==========
 
-[ 2025-02-25T09:48:58.294431700 | GAME ] Players: [Ladino (MORTO), Mago (MORTO), Pinguim 8/13, Xunda-1 6/6, Rato-1 8/8, Guerreiro 12/12, Bardo 8/8, Goblin-1 7/7]
+[ 2025-02-25T09:53:24.126050600 | GAME ] Players: [Mago (MORTO), Goblin-2 (MORTO), Goblin-1 (MORTO), Píton 10/13, Rato-1 6/6, Tanque 8/15, Guerreiro 12/12, Arqueiro 10/10]
 
-[ 2025-02-25T09:48:58.295434600 | GAME ] Pinguim 8/13 usou Mordida em [Guerreiro 12/12]. Resultado: ERROU
+[ 2025-02-25T09:53:24.126050600 | GAME ] Píton 10/13 usou Mordida em [Tanque 8/15]. Resultado: ERROU
 
-[ 2025-02-25T09:48:58.295434600 | GAME ] Xunda-1 6/6 usou Ataque em [Guerreiro 12/12]. Resultado: ERROU
+[ 2025-02-25T09:53:24.127048700 | GAME ] Rato-1 6/6 usou Ataque em [Tanque 8/15]. Resultado: ERROU
 
-[ 2025-02-25T09:48:58.295434600 | GAME ] Rato-1 8/8 usou Ataque em [Guerreiro 7/12]. Resultado: ACERTOU
+[ 2025-02-25T09:53:24.127048700 | GAME ] Tanque tomou 1 por estar Envenenado
 
-[ 2025-02-25T09:48:58.296433900 | GAME ] Guerreiro 7/12 usou Ataque em [Pinguim 8/13]. Resultado: ERROU
+[ 2025-02-25T09:53:24.127048700 | GAME ] Tanque 7/15 usou Ataque em [Píton 5/13]. Resultado: ACERTOU
 
-[ 2025-02-25T09:48:58.298432500 | GAME ] Bardo 8/8 usou Inspiração de Bardo em [Guerreiro 7/12]. Resultado: ACERTOU
+[ 2025-02-25T09:53:24.128050900 | GAME ] Guerreiro 12/12 usou Ataque em [Píton 5/13]. Resultado: ERROU
 
-[ 2025-02-25T09:48:58.298432500 | GAME ] Goblin-1 7/7 usou Ataque em [Guerreiro 3/12]. Resultado: ACERTOU
+[ 2025-02-25T09:53:24.128050900 | GAME ] Arqueiro 10/10 usou Ataque em [Píton 1/13]. Resultado: ACERTOU
 
-[ 2025-02-25T09:48:58.853370 | GAME ] 
+[ 2025-02-25T09:53:24.917022200 | GAME ] 
 ========== TURNO 4 ==========
 
-[ 2025-02-25T09:48:58.853370 | GAME ] Players: [Ladino (MORTO), Mago (MORTO), Pinguim 8/13, Xunda-1 6/6, Rato-1 8/8, Guerreiro 3/12, Bardo 8/8, Goblin-1 7/7]
+[ 2025-02-25T09:53:24.917975 | GAME ] Players: [Mago (MORTO), Goblin-2 (MORTO), Goblin-1 (MORTO), Píton 1/13, Rato-1 6/6, Tanque 7/15, Guerreiro 12/12, Arqueiro 10/10]
 
-[ 2025-02-25T09:48:58.854367500 | GAME ] Pinguim 8/13 usou Mordida em [Guerreiro (MORTO)]. Resultado: ACERTOU
+[ 2025-02-25T09:53:24.917975 | GAME ] Píton 1/13 usou Mordida em [Tanque 2/15]. Resultado: ACERTOU
 
-[ 2025-02-25T09:48:58.854367500 | GAME ] Xunda-1 6/6 usou Ataque em [Bardo 8/8]. Resultado: ERROU
+[ 2025-02-25T09:53:24.917975 | GAME ] Rato-1 6/6 usou Ataque em [Tanque (MORTO)]. Resultado: ACERTOU
 
-[ 2025-02-25T09:48:58.855369500 | GAME ] Rato-1 8/8 usou Ataque em [Bardo 5/8]. Resultado: ACERTOU
+[ 2025-02-25T09:53:24.918976100 | GAME ] Guerreiro 12/12 usou Ataque em [Píton 1/13]. Resultado: ERROU
 
-[ 2025-02-25T09:48:58.855369500 | GAME ] Bardo 5/8 usou Ataque em [Pinguim 2/13]. Resultado: ACERTOU
+[ 2025-02-25T09:53:24.918976100 | GAME ] Arqueiro 10/10 usou Ataque em [Píton (MORTO)]. Resultado: CRITICAL_HIT
 
-[ 2025-02-25T09:48:58.855369500 | GAME ] Goblin-1 7/7 usou Ataque em [Bardo 5/8]. Resultado: ERROU
-
-[ 2025-02-25T09:48:59.421494 | GAME ] 
+[ 2025-02-25T09:53:25.621195300 | GAME ] 
 ========== TURNO 5 ==========
 
-[ 2025-02-25T09:48:59.422458400 | GAME ] Players: [Ladino (MORTO), Mago (MORTO), Pinguim 2/13, Xunda-1 6/6, Rato-1 8/8, Guerreiro (MORTO), Bardo 5/8, Goblin-1 7/7]
+[ 2025-02-25T09:53:25.622196800 | GAME ] Players: [Mago (MORTO), Goblin-2 (MORTO), Goblin-1 (MORTO), Píton (MORTO), Rato-1 6/6, Tanque (MORTO), Guerreiro 12/12, Arqueiro 10/10]
 
-[ 2025-02-25T09:48:59.423450 | GAME ] Pinguim 2/13 usou Congelar em [Bardo 5/8]. Resultado: ACERTOU
+[ 2025-02-25T09:53:25.622196800 | GAME ] Rato-1 6/6 usou Ataque em [Guerreiro 12/12]. Resultado: ERROU
 
-[ 2025-02-25T09:48:59.423450 | GAME ] Xunda-1 6/6 usou Ataque em [Bardo (MORTO)]. Resultado: ACERTOU
+[ 2025-02-25T09:53:25.623196400 | GAME ] Guerreiro 12/12 usou Ataque em [Rato-1 (MORTO)]. Resultado: ACERTOU
 
-[ 2025-02-25T09:48:59.424457300 | GAME ] Sem alvo disponível para Rato-1 8/8
+[ 2025-02-25T09:53:25.623196400 | GAME ] Sem alvo disponível para Arqueiro 10/10
 
-[ 2025-02-25T09:48:59.424457300 | GAME ] Sem alvo disponível para Goblin-1 7/7
+[ 2025-02-25T09:53:25.623196400 | GAME ] Vitória. Todos os monstros morreram.
 
-[ 2025-02-25T09:48:59.424457300 | GAME ] Derrota. Todos os heróis morreram.
+[ 2025-02-25T09:53:25.623196400 | GAME ] 
+========== RESULTADOS ==========
 
-[ 2025-02-25T09:48:59.425450700 | GAME ] =============== Fim de jogo ===============
-Batalhas jogadas: 1
-Turnos jogados: 5
+[ 2025-02-25T09:53:25.623196400 | GAME ] Guerreiro ganhou 79 pontos de experiência!
+
+[ 2025-02-25T09:53:25.623196400 | GAME ] Guerreiro Subiu para o nível 2!
+
+[ 2025-02-25T09:53:25.623196400 | GAME ] Arqueiro ganhou 88 pontos de experiência!
+
+[ 2025-02-25T09:53:25.624200700 | GAME ] Arqueiro Subiu para o nível 2!
+
+[ 2025-02-25T09:53:25.624200700 | GAME ] ===============================
+
+
+[ 2025-02-25T09:53:27.446149100 | GAME ] 
+========== TURNO 1 ==========
+
+[ 2025-02-25T09:53:27.446149100 | GAME ] Players: [Arqueiro 14/14, Rato-2 6/6, Xunda-1 6/6, Rato-1 8/8, Xunda-2 6/6, Guerreiro 17/17]
+
+[ 2025-02-25T09:53:27.446149100 | GAME ] Arqueiro 14/14 usou Ataque em [Rato-2 4/6]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:27.447174200 | GAME ] Rato-2 4/6 usou Ataque em [Arqueiro 9/14]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:27.447174200 | GAME ] Xunda-1 6/6 usou Ataque em [Arqueiro 9/14]. Resultado: ERROU
+
+[ 2025-02-25T09:53:27.447174200 | GAME ] Rato-1 8/8 usou Ataque em [Arqueiro 9/14]. Resultado: ERROU
+
+[ 2025-02-25T09:53:27.447174200 | GAME ] Xunda-2 6/6 usou Ataque em [Arqueiro 9/14]. Resultado: ERROU
+
+[ 2025-02-25T09:53:27.448149900 | GAME ] Guerreiro 17/17 usou Ataque em [Rato-2 (MORTO)]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:30.533982200 | GAME ] 
+========== TURNO 2 ==========
+
+[ 2025-02-25T09:53:30.534981 | GAME ] Players: [Arqueiro 9/14, Rato-2 (MORTO), Xunda-1 6/6, Rato-1 8/8, Xunda-2 6/6, Guerreiro 17/17]
+
+[ 2025-02-25T09:53:30.534981 | GAME ] Arqueiro 9/14 usou Ataque em [Xunda-1 (MORTO)]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:30.534981 | GAME ] Rato-1 8/8 usou Ataque em [Arqueiro 9/14]. Resultado: ERROU
+
+[ 2025-02-25T09:53:30.535980 | GAME ] Xunda-2 6/6 usou Ataque em [Arqueiro 7/14]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:30.535980 | GAME ] Guerreiro 17/17 usou Ataque em [Rato-1 2/8]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:31.141768400 | GAME ] 
+========== TURNO 3 ==========
+
+[ 2025-02-25T09:53:31.141768400 | GAME ] Players: [Arqueiro 7/14, Rato-2 (MORTO), Xunda-1 (MORTO), Rato-1 2/8, Xunda-2 6/6, Guerreiro 17/17]
+
+[ 2025-02-25T09:53:31.141768400 | GAME ] Arqueiro 7/14 usou Ataque múltiplo em [Rato-1 (MORTO), Xunda-2 (MORTO)]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:31.142733600 | GAME ] Sem alvo disponível para Guerreiro 17/17
+
+[ 2025-02-25T09:53:31.142733600 | GAME ] Vitória. Todos os monstros morreram.
+
+[ 2025-02-25T09:53:31.142733600 | GAME ] 
+========== RESULTADOS ==========
+
+[ 2025-02-25T09:53:31.142733600 | GAME ] Arqueiro ganhou 74 pontos de experiência!
+
+[ 2025-02-25T09:53:31.142733600 | GAME ] Arqueiro Subiu para o nível 3!
+
+[ 2025-02-25T09:53:31.142733600 | GAME ] Guerreiro ganhou 71 pontos de experiência!
+
+[ 2025-02-25T09:53:31.142733600 | GAME ] Guerreiro Subiu para o nível 3!
+
+[ 2025-02-25T09:53:31.143729300 | GAME ] ===============================
+
+
+[ 2025-02-25T09:53:31.753390800 | GAME ] 
+========== TURNO 1 ==========
+
+[ 2025-02-25T09:53:31.754390300 | GAME ] Players: [Arqueiro 10/18, Guerreiro 22/22, Pinguim 20/20, Goblin-1 7/7, Rato-1 9/9, Xunda-1 9/9]
+
+[ 2025-02-25T09:53:31.754390300 | GAME ] Arqueiro 10/18 usou Ataque em [Pinguim 20/20]. Resultado: ERROU
+
+[ 2025-02-25T09:53:31.754390300 | GAME ] Guerreiro 22/22 usou Ataque em [Pinguim 13/20]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:31.756391900 | GAME ] Pinguim 13/20 usou Congelar em [Arqueiro 10/18]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:31.756391900 | GAME ] Goblin-1 7/7 usou Ataque em [Arqueiro 6/18]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:31.756391900 | GAME ] Rato-1 9/9 usou Ataque em [Arqueiro 1/18]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:31.756391900 | GAME ] Xunda-1 9/9 usou Ataque em [Arqueiro (MORTO)]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:32.518311 | GAME ] 
+========== TURNO 2 ==========
+
+[ 2025-02-25T09:53:32.518311 | GAME ] Players: [Arqueiro (MORTO), Guerreiro 22/22, Pinguim 13/20, Goblin-1 7/7, Rato-1 9/9, Xunda-1 9/9]
+
+[ 2025-02-25T09:53:32.518311 | GAME ] Guerreiro 22/22 usou Ataque em [Pinguim 13/20]. Resultado: ERROU
+
+[ 2025-02-25T09:53:32.519311900 | GAME ] Pinguim 13/20 usou Mordida em [Guerreiro 22/22]. Resultado: ERROU
+
+[ 2025-02-25T09:53:32.519311900 | GAME ] Goblin-1 7/7 usou Ataque em [Guerreiro 22/22]. Resultado: ERROU
+
+[ 2025-02-25T09:53:32.519311900 | GAME ] Rato-1 9/9 usou Ataque em [Guerreiro 14/22]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:32.519311900 | GAME ] Xunda-1 9/9 usou Ataque em [Guerreiro 14/22]. Resultado: ERROU
+
+[ 2025-02-25T09:53:33.414283600 | GAME ] 
+========== TURNO 3 ==========
+
+[ 2025-02-25T09:53:33.414283600 | GAME ] Players: [Arqueiro (MORTO), Guerreiro 14/22, Pinguim 13/20, Goblin-1 7/7, Rato-1 9/9, Xunda-1 9/9]
+
+[ 2025-02-25T09:53:33.415284500 | GAME ] Guerreiro 14/22 usou Ataque atordoante em [Pinguim 13/20]. Resultado: ERROU
+
+[ 2025-02-25T09:53:33.417283500 | GAME ] Pinguim 13/20 não pode atacar essa rodada pois está Atordoado
+
+[ 2025-02-25T09:53:33.418282800 | GAME ] Goblin-1 7/7 usou Ataque em [Guerreiro 14/22]. Resultado: ERROU
+
+[ 2025-02-25T09:53:33.418282800 | GAME ] Rato-1 9/9 usou Ataque em [Guerreiro 11/22]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:33.418282800 | GAME ] Xunda-1 9/9 usou Ataque em [Guerreiro 11/22]. Resultado: ERROU
+
+[ 2025-02-25T09:53:34.021821100 | GAME ] 
+========== TURNO 4 ==========
+
+[ 2025-02-25T09:53:34.022820300 | GAME ] Players: [Arqueiro (MORTO), Guerreiro 11/22, Pinguim 13/20, Goblin-1 7/7, Rato-1 9/9, Xunda-1 9/9]
+
+[ 2025-02-25T09:53:34.022820300 | GAME ] Guerreiro 11/22 usou Ataque em [Pinguim 7/20]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:34.022820300 | GAME ] Pinguim 7/20 não pode atacar essa rodada pois está Atordoado
+
+[ 2025-02-25T09:53:34.023821700 | GAME ] Goblin-1 7/7 usou Ataque em [Guerreiro 3/22]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:34.023821700 | GAME ] Rato-1 9/9 usou Ataque em [Guerreiro 3/22]. Resultado: ERROU
+
+[ 2025-02-25T09:53:34.023821700 | GAME ] Xunda-1 9/9 usou Ataque em [Guerreiro (MORTO)]. Resultado: ACERTOU
+
+[ 2025-02-25T09:53:34.023821700 | GAME ] Derrota. Todos os heróis morreram.
+
+[ 2025-02-25T09:53:34.024823800 | GAME ] =============== Fim de jogo ===============
+Batalhas jogadas: 4
+Turnos jogados: 14
 
 
