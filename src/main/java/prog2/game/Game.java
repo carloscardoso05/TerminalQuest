@@ -53,7 +53,7 @@ public class Game implements Serializable {
                         .reset());
             }
             System.out.println("Pressione Enter para ir para o próximo turno.");
-//            new java.util.Scanner(System.in).nextLine();
+            new java.util.Scanner(System.in).nextLine();
             turno.nextTurn();
             qtdTurnos++;
         }
