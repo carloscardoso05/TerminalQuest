@@ -6,7 +6,7 @@ import prog2.entities.players.Player;
 
 import java.io.Serial;
 
-public class Hero extends Player {
+public abstract class Hero extends Player {
     @Serial
     private static final long serialVersionUID = 1L;
 

@@ -103,11 +103,11 @@ public class Turno implements Serializable {
         Log.getInstance().game("Players: " + getPlayers());
         for (Player player : this.getPlayers()) {
             // Aplica os efeitos de status e verifica possibilidade de ação
-            Iterator<Status> statusIter = player.getStatus().iterator();
+            Iterator<Status> statusIter = new ArrayList<>(player.getStatus()).iterator();
             boolean acao = true;
             while (statusIter.hasNext()) {
                 Status status = statusIter.next();
-                    if (status.getDuracaoRestante() < 1) {
+                if (status.getDuracaoRestante() < 1) {
                     status.removerEfeito(player);
                     continue;
                 }
