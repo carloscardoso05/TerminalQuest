@@ -2,15 +2,12 @@ package prog2.game;
 
 import prog2.entities.players.heroes.*;
 import prog2.game.log.Log;
-import prog2.util.PlayerFactory;
-import prog2.util.RandomSingleton;
 import prog2.util.ScannerUtil;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 
 public class Game implements Serializable {
     @Serial
@@ -56,7 +53,7 @@ public class Game implements Serializable {
                     }
                     return null;
                 });
-        return Difficulty.values()[dificuldade];
+        return Difficulty.values()[dificuldade - 1];
     }
 
     public List<Hero> createParty() {
@@ -66,12 +63,12 @@ public class Game implements Serializable {
 
         for (int i = 0; i < PARTY_SIZE; i++) {
             int classe = ScannerUtil.getInt("Insira a classe do personagem\n" +
-                    "1. Arqueiro\n" +
-                    "2. Bardo\n" +
-                    "3. Guerreiro\n" +
-                    "4. Ladino\n" +
-                    "5. Mago\n" +
-                    "6. Tanque",
+                            "1. Arqueiro\n" +
+                            "2. Bardo\n" +
+                            "3. Guerreiro\n" +
+                            "4. Ladino\n" +
+                            "5. Mago\n" +
+                            "6. Tanque",
                     input -> {
                         if (classes.contains(input)) {
                             return "classe já utilizada";
@@ -82,12 +79,12 @@ public class Game implements Serializable {
                         return null;
                     });
             String nome = ScannerUtil.getString(
-                    "Insira o nome para o personagem:",
+                    "Insira o nome para o personagem (deixe em branco para usar o nome padrão):",
                     input -> {
-                    if (nomes.contains(input)) {
-                        return "nome ja utilizado";
-                    }
-                    return null;
+                        if (nomes.contains(input) && !input.isBlank()) {
+                            return "nome ja utilizado";
+                        }
+                        return null;
                     });
             classes.add(classe);
             nomes.add(nome);

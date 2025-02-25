@@ -19,9 +19,9 @@ public abstract class Player implements Serializable {
 
     public final PlayerIA ia = new PlayerIA(this);
     protected String nome;
-    protected  int vidaMaxima;
+    protected int vidaMaxima;
     protected int vidaAtual;
-    protected  int manaMaxima;
+    protected int manaMaxima;
     protected int manaAtual;
     protected int forcaDeAtaque;
     protected int inteligencia;
@@ -40,6 +40,9 @@ public abstract class Player implements Serializable {
     }
 
     public Player(String nome, int vidaMaxima, int manaMaxima, int forcaDeAtaque, int inteligencia, int defesa, int velocidade, int destreza, int nivel, int ameaca, Attack ataque, Skill habilidade) {
+        if (nome == null || nome.isBlank()) {
+            nome = getClass().getSimpleName();
+        }
         this.nome = nome;
         this.vidaMaxima = vidaMaxima;
         this.vidaAtual = vidaMaxima;
@@ -190,7 +193,12 @@ public abstract class Player implements Serializable {
     @Override
     public String toString() {
         if (estaMorto())
-            return Ansi.ansi().fgRed().a("%s (MORTO)").reset().toString().formatted(getNome());
+            return Ansi.ansi()
+                    .fgRed()
+                    .a("%s (MORTO)")
+                    .reset()
+                    .toString()
+                    .formatted(getNome());
         return "%s %d/%d".formatted(getNome(), getVidaAtual(), getVidaMaxima());
     }
 }
