@@ -46,18 +46,13 @@ public class Turno implements Serializable {
     public void aplicar_experiencia(Hero player, int exp_base) {
         int exp = exp_base + RandomSingleton.getInstance().nextInt(-10, 10);
         player.setExp(player.getExp() + exp);
-        Log.getInstance()
-                .game(player.getNome() + " ganhou " + exp + " pontos de experiência!");
+        Log.getInstance().logGanhouXP(player, exp);
 
         int newLevel = (100 * (int) Math.pow(2, player.getNivel() - 1));
         if (player.getExp() >= newLevel) {
             player.setNivel(player.getNivel() + 1);
             player.subirNivel();
-            Log.getInstance()
-                    .game(Ansi.ansi()
-                            .fgBlue()
-                            .a(player.getNome() + " Subiu para o nível " + player.getNivel() + "!")
-                            .reset());
+            Log.getInstance().logSubiuDeNivel(player);
         }
     }
 
@@ -79,19 +74,11 @@ public class Turno implements Serializable {
         List<Monster> monsters = getMonsters();
 
         if (todosMortos(heroes)) {
-            Log.getInstance()
-                    .game(Ansi.ansi()
-                            .fgBrightRed()
-                            .a("Derrota. Todos os heróis morreram.")
-                            .reset());
+            Log.getInstance().logDerrota();
             return false;
         }
         if (todosMortos(monsters)) {
-            Log.getInstance()
-                    .game(Ansi.ansi()
-                            .fgBrightYellow()
-                            .a("Vitória. Todos os monstros morreram.")
-                            .reset());
+            Log.getInstance().logVitoria();
             Log.getInstance()
                     .game(Ansi.ansi()
                             .bold()
@@ -141,11 +128,7 @@ public class Turno implements Serializable {
             return;
         }
 
-        Log.getInstance()
-                .game(Ansi.ansi()
-                        .bold()
-                        .a("\n========== TURNO %d ==========".formatted(turnNumber))
-                        .reset());
+        Log.getInstance().logTurno(turnNumber);
         Log.getInstance().game("Players: " + getPlayers());
         for (Player player : this.getPlayers()) {
             if (player.estaMorto())

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>prog2</groupId>
-    <artifactId>FacompQuest</artifactId>
+    <artifactId>TerminalQuest</artifactId>
     <version>1.0</version>
 
     <properties>

@@ -1,5 +1,6 @@
 package prog2.game.log;
 
+import org.fusesource.jansi.Ansi;
 import prog2.entities.actions.Action;
 import prog2.entities.enums.ResultadoAtaque;
 import prog2.entities.players.Player;
@@ -46,6 +47,56 @@ public class Log {
 
     public void action(Player origem, Player alvo, Action acao, ResultadoAtaque resultado) {
         action(origem, List.of(alvo), acao, resultado);
+    }
+
+    public void logTurno(int numeroTurno) {
+        game(Ansi.ansi()
+                .bold()
+                .a("\n=============== Turno %s ===============".formatted(numeroTurno))
+                .reset());
+    }
+
+    public void logBatalha(int numeroBatalha) {
+        game(Ansi.ansi()
+                .bold()
+                .a("=============== Batalha %s ===============".formatted(numeroBatalha))
+                .reset());
+    }
+
+    public void logFimDeJogo(int qtdBatalhas, int qtdTurnos) {
+        game(Ansi.ansi().bold().a(
+                "\n=============== Fim de jogo ===============\n"
+                        + "Batalhas jogadas: %s\n".formatted(qtdBatalhas)
+                        + "Turnos jogados: %s\n".formatted(qtdTurnos)
+        ).reset());
+    }
+
+    public void logDerrota() {
+        game(Ansi.ansi()
+                .fgBrightRed()
+                .a("Derrota. Todos os heróis morreram.")
+                .reset());
+    }
+
+    public void logVitoria() {
+        game(Ansi.ansi()
+                .fgBrightYellow()
+                .a("Vitória. Todos os monstros morreram.")
+                .reset());
+    }
+
+    public void logGanhouXP(Player player, int xp) {
+        game(Ansi.ansi()
+                .fgGreen()
+                .a("%s ganhou %d pontos de experiência".formatted(player.getNome(), xp))
+                .reset());
+    }
+
+    public void logSubiuDeNivel(Player player) {
+        game(Ansi.ansi()
+                .fgBlue()
+                .a("%s subiu do nível %d para %d".formatted(player.getNome(), player.getNivel() - 1, player.getNivel()))
+                .reset());
     }
 
     public void game(Object message) {

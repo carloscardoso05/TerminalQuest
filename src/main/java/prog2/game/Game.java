@@ -1,6 +1,5 @@
 package prog2.game;
 
-import org.fusesource.jansi.Ansi;
 import prog2.entities.players.heroes.*;
 import prog2.game.log.Log;
 import prog2.util.ScannerUtil;
@@ -9,45 +8,32 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
 
 public class Game {
     private final Turno turno = new Turno();
     private int qtdTurnos;
     private int qtdBatalhas;
     private static final int PARTY_SIZE = 4;
+    private final Scanner sc = new Scanner(System.in);
 
     public void run() {
-        if (turno.getTurnNumber() == 1) {
-            turno.setDifficulty(getDificuldade());
-            turno.addPlayer(createParty());
-            qtdBatalhas++;
-            System.out.println(Ansi.ansi()
-                    .bold()
-                    .a("=============== Batalha %s ===============".formatted(qtdBatalhas))
-                    .reset());
-            turno.nextTurn();
-            qtdTurnos++;
-        }
+        turno.setDifficulty(getDificuldade());
+        turno.addPlayer(createParty());
+        Log.getInstance().logBatalha(++qtdBatalhas);
+        turno.nextTurn();
+        qtdTurnos++;
+
         while (turno.hasNextTurn()) {
             if (turno.getTurnNumber() == 1) {
-                qtdBatalhas++;
-                System.out.println(Ansi.ansi()
-                        .bold()
-                        .a("=============== Batalha %s ===============".formatted(qtdBatalhas))
-                        .reset());
+                Log.getInstance().logBatalha(++qtdBatalhas);
             }
-            System.out.println("Pressione Enter para ir para o próximo turno.");
-            new java.util.Scanner(System.in).nextLine();
+            System.out.print("Pressione Enter para ir para o próximo turno.");
+            sc.nextLine();
             turno.nextTurn();
             qtdTurnos++;
         }
-        Log.getInstance().game(
-                Ansi.ansi().bold().a(
-                        "=============== Fim de jogo ===============\n"
-                                + "Batalhas jogadas: %s\n".formatted(qtdBatalhas)
-                                + "Turnos jogados: %s\n".formatted(qtdTurnos)
-                ).reset()
-        );
+        Log.getInstance().logFimDeJogo(qtdBatalhas, qtdTurnos);
         final Optional<File> logFile = Log.getInstance().export();
         logFile.ifPresentOrElse(
                 file -> System.out.println("Log salvo em: " + file.getAbsolutePath()),
