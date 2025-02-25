@@ -1,5 +1,6 @@
 package prog2.entities.players.heroes;
 
+import prog2.entities.actions.attack.Attack;
 import prog2.entities.actions.skills.ladino.AtaqueEscondido;
 
 public class Ladino extends Hero {
@@ -14,6 +15,7 @@ public class Ladino extends Hero {
                 1,
                 1,
                 10,
+                new Attack("Adaga", 6, 1),
                 new AtaqueEscondido());
     }
 

@@ -1,5 +1,6 @@
 package prog2.entities.players.heroes;
 
+import prog2.entities.actions.attack.Attack;
 import prog2.entities.actions.skills.bardo.Inspiracao;
 
 public class Bardo extends Hero {
@@ -14,6 +15,7 @@ public class Bardo extends Hero {
                 1,
                 1,
                 9,
+                new Attack("Alaúde", 6, 2),
                 new Inspiracao());
     }
 

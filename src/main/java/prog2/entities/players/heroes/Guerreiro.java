@@ -1,5 +1,6 @@
 package prog2.entities.players.heroes;
 
+import prog2.entities.actions.attack.Attack;
 import prog2.entities.actions.skills.guerreiro.AtaqueAtordoante;
 
 public class Guerreiro extends Hero {
@@ -15,6 +16,7 @@ public class Guerreiro extends Hero {
                 2,
                 1,
                 14,
+                new Attack("Espada", 8, 2),
                 new AtaqueAtordoante());
     }
 

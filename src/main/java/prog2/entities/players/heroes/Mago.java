@@ -1,5 +1,6 @@
 package prog2.entities.players.heroes;
 
+import prog2.entities.actions.attack.Attack;
 import prog2.entities.actions.skills.mago.BolaDeFogo;
 
 public class Mago extends Hero {
@@ -14,6 +15,7 @@ public class Mago extends Hero {
                 0,
                 1,
                 8,
+                new Attack("Magia", 6, 2),
                 new BolaDeFogo());
     }
 

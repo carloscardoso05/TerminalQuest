@@ -1,5 +1,6 @@
 package prog2.entities.players.heroes;
 
+import prog2.entities.actions.attack.Attack;
 import prog2.entities.actions.skills.tanque.ChamarAtencao;
 
 public class Tanque extends Hero {
@@ -15,6 +16,7 @@ public class Tanque extends Hero {
                 1,
                 1,
                 14,
+                new Attack("Espada", 8, 2),
                 new ChamarAtencao());
     }
 

@@ -1,6 +1,7 @@
 package prog2.entities.players.heroes;
 
 
+import prog2.entities.actions.attack.Attack;
 import prog2.entities.actions.skills.clerigo.Cura;
 
 public class Clerigo extends Hero{
@@ -15,6 +16,7 @@ public class Clerigo extends Hero{
                 1,
                 1,
                 10,
+                new Attack("Martelo de guerra", 8, 1),
                 new Cura());
     }
 
