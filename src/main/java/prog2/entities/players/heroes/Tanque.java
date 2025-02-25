@@ -5,6 +5,27 @@ import prog2.entities.actions.skills.tanque.ChamarAtencao;
 public class Tanque extends Hero {
 
     public Tanque(String nome) {
-        super(nome, 15, 8, 2, 0, 14, 0, 1, 1, 14, new ChamarAtencao());
+        super(nome,
+                15,
+                8,
+                2,
+                0,
+                14,
+                0,
+                1,
+                1,
+                14,
+                new ChamarAtencao());
+    }
+
+    @Override
+    public void subirNivel() {
+        setVidaMaxima(getVidaMaxima() + 5);
+        setManaMaxima(getManaMaxima() + 3);
+        if (getNivel() % 2 == 0) {
+            setForcaDeAtaque(getForcaDeAtaque() + 1);
+            setDestreza(getDestreza() + 1);
+            setDefesa(getDefesa() + 1);
+        }
     }
 }

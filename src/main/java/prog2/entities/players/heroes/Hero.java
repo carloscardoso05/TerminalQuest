@@ -6,7 +6,7 @@ import prog2.entities.players.Player;
 
 import java.io.Serial;
 
-public class Hero extends Player {
+public abstract class Hero extends Player {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -18,4 +18,11 @@ public class Hero extends Player {
     public String toString() {
         return Ansi.ansi().fgBlue().a(super.toString()).reset().toString();
     }
+
+    public void recuperarPontos() {
+        setVidaAtual(Math.min(getVidaMaxima(), (int) (getVidaAtual() * 1.5)));
+        setManaAtual(Math.min(getManaMaxima(), (int) (getManaAtual() * 1.5)));
+    }
+
+    public abstract void subirNivel();
 }

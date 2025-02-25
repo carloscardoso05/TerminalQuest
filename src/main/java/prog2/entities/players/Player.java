@@ -19,9 +19,9 @@ public abstract class Player implements Serializable {
 
     public final PlayerIA ia = new PlayerIA(this);
     protected String nome;
-    protected final int vidaMaxima;
+    protected  int vidaMaxima;
     protected int vidaAtual;
-    protected final int manaMaxima;
+    protected  int manaMaxima;
     protected int manaAtual;
     protected int forcaDeAtaque;
     protected int inteligencia;
@@ -77,6 +77,10 @@ public abstract class Player implements Serializable {
 
     public int getVidaMaxima() {
         return vidaMaxima;
+    }
+
+    public void setVidaMaxima(int vidaMaxima) {
+        this.vidaMaxima = vidaMaxima;
     }
 
     public int getVidaAtual() {
@@ -137,6 +141,10 @@ public abstract class Player implements Serializable {
 
     public int getManaMaxima() {
         return manaMaxima;
+    }
+
+    public void setManaMaxima(int manaMaxima) {
+        this.manaMaxima = manaMaxima;
     }
 
     public int getManaAtual() {

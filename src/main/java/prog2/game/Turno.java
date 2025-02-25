@@ -42,10 +42,14 @@ public class Turno implements Serializable {
         return exp;
     }
 
-    public void aplicar_experiencia(List<? extends Player> players, int exp) {
-        for (Player player : players) {
+    public void aplicar_experiencia(List<Hero> players, int exp) {
+        for (Hero player : players) {
             player.setExp(player.getExp() + exp);
-            player.setNivel(player.getExp() / (100 * (int) Math.pow(2, player.getNivel() - 1)));
+            int newLevel = (100 * (int) Math.pow(2, player.getNivel() - 1));
+            if (player.getExp() > newLevel) {
+                player.setNivel(player.getNivel() + 1);
+                player.subirNivel();
+            }
         }
     }
 
@@ -69,6 +73,9 @@ public class Turno implements Serializable {
             Minion.resetMinionsCount();
             int exp = calcular_experiencia(monsters);
             aplicar_experiencia(heroes, exp);
+            for (Hero hero : heroes) {
+                hero.recuperarPontos();
+            }
             Log.getInstance().game("Vitória. Todos os monstros morreram. Heróis ganharam " + exp + "Exp.");
             return false;
         }
