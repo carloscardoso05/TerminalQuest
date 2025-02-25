@@ -30,8 +30,8 @@ public class Log implements Serializable {
     private final List<String> lines = new ArrayList<>();
 
     private static String formatMessage(String message, LogType type) {
-//        return String.format("[ %s | %s ] %s\n", java.time.LocalDateTime.now(), type.name(), message);
-        return message + "\n";
+        return String.format("[ %s | %s ] %s\n", java.time.LocalDateTime.now(), type.name(), message)
+                .replaceAll("\u001B\\[[;\\d]*m", "");
     }
 
     public void write(Object message, LogType type) {
@@ -39,7 +39,7 @@ public class Log implements Serializable {
             return;
         }
         final String formattedMessage = formatMessage(message.toString(), type);
-        System.out.printf(formattedMessage);
+        System.out.print(message + "\n");
         lines.add(formattedMessage);
     }
 

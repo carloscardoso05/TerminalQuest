@@ -1,5 +1,6 @@
 package prog2.game;
 
+import org.fusesource.jansi.Ansi;
 import prog2.entities.players.heroes.*;
 import prog2.game.log.Log;
 import prog2.util.ScannerUtil;
@@ -13,6 +14,8 @@ public class Game implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     private final Turno turno = new Turno();
+    private int qtdTurnos;
+    private int qtdBatalhas;
     private final Log log = Log.getInstance();
     private final String name;
     private static final int PARTY_SIZE = 4;
@@ -33,13 +36,35 @@ public class Game implements Serializable {
         if (turno.getTurnNumber() == 1) {
             turno.setDifficulty(getDificuldade());
             turno.addPlayer(createParty());
+            qtdBatalhas++;
+            System.out.println(Ansi.ansi()
+                    .bold()
+                    .a("=============== Batalha %s ===============".formatted(qtdBatalhas))
+                    .reset());
             turno.nextTurn();
+            qtdTurnos++;
         }
         while (turno.hasNextTurn()) {
+            if (turno.getTurnNumber() == 1) {
+                qtdBatalhas++;
+                System.out.println(Ansi.ansi()
+                        .bold()
+                        .a("=============== Batalha %s ===============".formatted(qtdBatalhas))
+                        .reset());
+            }
             System.out.println("Pressione Enter para ir para o próximo turno.");
 //            new java.util.Scanner(System.in).nextLine();
             turno.nextTurn();
+            qtdTurnos++;
         }
+        Log.getInstance().game(
+                Ansi.ansi().bold().a(
+                        "=============== Fim de jogo ===============\n"
+                                + "Batalhas jogadas: %s\n".formatted(qtdBatalhas)
+                                + "Turnos jogados: %s\n".formatted(qtdTurnos)
+                ).reset()
+        );
+        Log.getInstance().export();
     }
 
     public Difficulty getDificuldade() {
@@ -109,13 +134,5 @@ public class Game implements Serializable {
             }
         }
         return heroes;
-
-        // TODO implementar
-//        return List.of(
-//                PlayerFactory.criarHeroiAleatorio("Heroi 1"),
-//                PlayerFactory.criarHeroiAleatorio("Heroi 2"),
-//                PlayerFactory.criarHeroiAleatorio("Heroi 3"),
-//                PlayerFactory.criarHeroiAleatorio("Heroi 4")
-//        );
     }
 }
