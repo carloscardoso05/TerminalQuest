@@ -68,6 +68,7 @@ public class Turno implements Serializable {
             return false;
         }
         if (todosMortos(monsters)) {
+            Minion.resetMinionsCount();
             int exp = calcular_experiencia(monsters);
             aplicar_experiencia(heroes, exp);
             Log.getInstance().game("Vitória. Todos os monstros morreram. Heróis ganharam " + exp + "Exp.");
@@ -91,7 +92,6 @@ public class Turno implements Serializable {
             for (int i = 0; i < minionsCount; i++) {
                 addPlayer(PlayerFactory.criarMinionAleatorio(mediaNivel));
             }
-            //TODO: coisar nomes dos minions
             organizaPlayersEmOrdemDeAcao();
         }
 
