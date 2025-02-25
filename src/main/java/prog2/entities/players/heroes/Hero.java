@@ -15,8 +15,8 @@ public abstract class Hero extends Player {
     }
 
     public void recuperarPontos() {
-        setVidaAtual(Math.min(getVidaMaxima(), (int) (getVidaAtual() * 1.5)));
-        setManaAtual(Math.min(getManaMaxima(), (int) (getManaAtual() * 1.5)));
+        setVidaAtual(Math.min(getVidaMaxima(), (int) (getVidaAtual() * 1.7)));
+        setManaAtual(Math.min(getManaMaxima(), (int) (getManaAtual() * 1.7)));
     }
 
     public abstract void subirNivel();

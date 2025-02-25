@@ -80,15 +80,16 @@ public class Game {
                             Insira a classe do personagem
                             1. Arqueiro
                             2. Bardo
-                            3. Guerreiro
-                            4. Ladino
-                            5. Mago
-                            6. Tanque""",
+                            3. Clérigo
+                            4. Guerreiro
+                            5. Ladino
+                            6. Mago
+                            7. Tanque""",
                     input -> {
                         if (classes.contains(input)) {
                             return "classe já utilizada";
                         }
-                        if (input < 1 || input > 6) {
+                        if (input < 1 || input > 7) {
                             return "selecione uma opção válida";
                         }
                         return null;
@@ -111,15 +112,18 @@ public class Game {
                     heroes.add(new Bardo(nome));
                     break;
                 case 3:
-                    heroes.add(new Guerreiro(nome));
+                    heroes.add(new Clerigo(nome));
                     break;
                 case 4:
-                    heroes.add(new Ladino(nome));
+                    heroes.add(new Guerreiro(nome));
                     break;
                 case 5:
-                    heroes.add(new Mago(nome));
+                    heroes.add(new Ladino(nome));
                     break;
                 case 6:
+                    heroes.add(new Mago(nome));
+                    break;
+                case 7:
                     heroes.add(new Tanque(nome));
             }
         }
