@@ -8,8 +8,8 @@ public class Piton extends Monster {
 
     public Piton(int nivel) {
         super("Píton",
-              10 + (2 * nivel) + Dice.rollDice(5),
-              10 + (2 * nivel) + Dice.rollDice(5),
+              10 + (4 * (nivel - 1)) + Dice.rollDice(5),
+              14 + (5 * (nivel - 1)) + Dice.rollDice(5),
               0,
               0,
               12 + (nivel / 2),

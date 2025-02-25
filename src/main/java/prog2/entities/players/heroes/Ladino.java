@@ -9,7 +9,6 @@ public class Ladino extends Hero {
     private static final long serialVersionUID = 1L;
 
     public Ladino(String nome) {
-        // TODO colocar valores corretos
-        super(nome, 85, 85, 2, 1, 4, 4, 1, 2, 4, new AtaqueEscondido());
+        super(nome, 10, 10, 0, 0, 12, 2, 1, 1, 10, new AtaqueEscondido());
     }
 }

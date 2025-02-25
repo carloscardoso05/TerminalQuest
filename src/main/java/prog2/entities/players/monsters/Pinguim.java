@@ -8,8 +8,8 @@ public class Pinguim extends Monster {
 
     public Pinguim(int nivel) {
         super("Pinguim",
-                12 + (2 * nivel) + Dice.rollDice(5),
-                10 + (2 * nivel) + Dice.rollDice(5),
+                12 + (4 * (nivel - 1)) + Dice.rollDice(5),
+                10 + (4 * (nivel - 1)) + Dice.rollDice(5),
                 1 + (nivel / 2),
                 0,
                 12 + (nivel / 2),
