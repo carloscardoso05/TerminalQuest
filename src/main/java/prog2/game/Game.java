@@ -61,6 +61,9 @@ public class Game implements Serializable {
                         if (classes.contains(input)) {
                             return "classe já utilizada";
                         }
+                        if (input < 1 || input > 6) {
+                            return "selecione uma opção válida";
+                        }
                         return null;
                     });
             String nome = ScannerUtil.getString(
