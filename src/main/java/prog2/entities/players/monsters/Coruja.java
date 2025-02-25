@@ -7,8 +7,8 @@ import prog2.game.Dice;
 public class Coruja extends Monster {
     public Coruja(int nivel) {
         super("Coruja",
-                14 + (2 * nivel) + Dice.rollDice(5),
-                10 + (2 * nivel) + Dice.rollDice(5),
+                14 + (5 * (nivel - 1)) + Dice.rollDice(5),
+                10 + (5 * (nivel - 1)) + Dice.rollDice(5),
                 2 + (nivel / 2),
                 2 + (nivel / 2),
                 12 + (nivel / 2),

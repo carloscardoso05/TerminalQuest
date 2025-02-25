@@ -8,6 +8,6 @@ public class Ladino extends Hero {
 
     public Ladino(String nome) {
         // TODO colocar valores corretos
-        super(nome, 85, 85, 2, 1, 4, 4, 1, 2, 4);
+        super(nome, 10, 10, 0, 0, 12, 2, 1, 1, 10);
     }
 }

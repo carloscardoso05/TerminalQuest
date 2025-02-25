@@ -4,6 +4,6 @@ public class Bardo extends Hero {
 
     public Bardo(String nome) {
         // TODO colocar valores corretos
-        super(nome, 95, 95, 2, 1, 2, 3, 1, 1, 2);
+        super(nome, 8, 15, 0, 2, 9, 1, 1, 1, 9);
     }
 }

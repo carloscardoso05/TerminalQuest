@@ -9,6 +9,6 @@ public class Mago extends Hero {
 
     public Mago(String nome) {
         // TODO colocar valores corretos
-        super(nome, 80, 80, 3, 1, 2, 3, 1, 5, 7);
+        super(nome, 8, 15, 0, 2, 9, 1, 0, 1, 8);
     }
 }
