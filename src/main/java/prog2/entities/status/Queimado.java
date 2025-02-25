@@ -16,7 +16,7 @@ public class Queimado extends Status {
     public void aplicarEfeito(Player player) throws ImpedeAcao {
         int dano = Dice.rollDice(DANO_MAX);
         player.setVidaAtual(Math.max(player.getVidaAtual() - dano, 0));
-        Log.getInstance().game(player.getNome() + " tomou " + dano + " por estar " + this.getNome());
+        Log.getInstance().game(player + " tomou " + dano + "de dano por estar " + this);
     }
 
     @Override

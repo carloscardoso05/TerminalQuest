@@ -7,16 +7,16 @@ import prog2.entities.actions.attack.Attack;
 import prog2.entities.actions.skills.Skill;
 import prog2.entities.enums.ResultadoAtaque;
 
-public class ataqueMultiplo extends Skill {
+public class AtaqueMultiplo extends Skill {
     private static final int DANO_BASE = 6;
 
-    public ataqueMultiplo() {
+    public AtaqueMultiplo() {
         super("Ataque múltiplo", 5);
     }
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
-        this.checarMana(origem.getManaAtual(), origem.getNome());
+        this.checarMana(origem.getManaAtual(), origem);
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
         ResultadoAtaque resultadoTotal = ResultadoAtaque.ERROU;
@@ -28,7 +28,7 @@ public class ataqueMultiplo extends Skill {
         }
 
         // TODO retorna o melhor resultado
-        this.registrarLog(origem.getNome(), alvos);
+        this.registrarLog(alvos);
         return resultadoTotal;
     }
 }

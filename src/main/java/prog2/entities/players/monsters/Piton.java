@@ -8,16 +8,16 @@ public class Piton extends Monster {
 
     public Piton(int nivel) {
         super("Píton",
-                10 + (2 * nivel) + Dice.rollDice(5),
-                10 + (2 * nivel) + Dice.rollDice(5),
-                0,
-                0,
-                12 + (nivel / 2),
-                2 + (nivel / 2),
-                2 + (nivel / 2),
-                nivel,
-                12);
+              10 + (2 * nivel) + Dice.rollDice(5),
+              10 + (2 * nivel) + Dice.rollDice(5),
+              0,
+              0,
+              12 + (nivel / 2),
+              2 + (nivel / 2),
+              2 + (nivel / 2),
+              nivel,
+              12,
+              new Envenenar());
         super.setAtaque(new Attack("Mordida", 6, super.getDestreza()));
-        super.getHabilidades().add(new Envenenar());
     }
 }

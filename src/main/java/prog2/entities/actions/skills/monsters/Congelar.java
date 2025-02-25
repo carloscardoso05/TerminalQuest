@@ -14,7 +14,7 @@ public class Congelar extends Skill {
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
-        super.checarMana(origem.getManaAtual(), origem.getNome());
+        super.checarMana(origem.getManaAtual(), origem);
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
         Player alvo = alvos.get(0);

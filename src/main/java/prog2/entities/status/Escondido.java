@@ -14,13 +14,13 @@ public class Escondido extends Status {
 
     @Override
     public void aplicarEfeito(Player player) throws ImpedeAcao {
-        Log.getInstance().game(player.getNome() + " não pode atacar essa rodada pois está " + this.getNome());
+        Log.getInstance().game(player + " não pode atacar essa rodada pois está " + this);
         throw new ImpedeAcao();
     }
 
     @Override
     public void reverterEfeito(Player player) {
-        AtaqueEscondido skill = (AtaqueEscondido) player.getHabilidades().get(0);
+        AtaqueEscondido skill = (AtaqueEscondido) player.getHabilidade();
         skill.execute(player, this.alvo);
     }
 }

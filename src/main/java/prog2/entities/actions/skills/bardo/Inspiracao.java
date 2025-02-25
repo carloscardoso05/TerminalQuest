@@ -14,12 +14,12 @@ public class Inspiracao extends Skill {
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
-        this.checarMana(origem.getManaAtual(), origem.getNome());
+        this.checarMana(origem.getManaAtual(), origem);
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
         Player alvo = alvos.get(0);
         alvo.getStatus().add(new Inspirado());
-        registrarLog(origem.getNome(), alvos);
+        registrarLog(alvos);
         return ResultadoAtaque.ACERTOU;
     }
 }

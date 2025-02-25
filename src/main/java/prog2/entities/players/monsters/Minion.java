@@ -10,15 +10,16 @@ public class Minion extends Monster {
 
     public Minion(int nivel) {
         super(null,
-                5 + (nivel - 1) + Dice.rollDice(3),
-                0,
-                1 + (nivel / 2),
-                0,
-                1 + (nivel / 2),
-                0,
-                1 + (nivel / 2),
-                nivel,
-                10);
+              5 + (nivel - 1) + Dice.rollDice(3),
+              0,
+              1 + (nivel / 2),
+              0,
+              1 + (nivel / 2),
+              0,
+              1 + (nivel / 2),
+              nivel,
+              10,
+              null);
         super.setAtaque(new Attack("Ataque", 4, super.getForcaDeAtaque()));
 
         int opc = Dice.rollDice(3);

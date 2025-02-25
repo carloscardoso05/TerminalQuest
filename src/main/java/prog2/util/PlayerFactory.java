@@ -32,17 +32,27 @@ public abstract class PlayerFactory {
     }
 
     public static Monster criarMonstroAleatorio(int nivel) {
-        final int n = rd.nextInt(6);
+        final int n = rd.nextInt(4);
+        return switch (n) {
+            case 0 -> new Minion(nivel);
+            case 1 -> new Coruja(nivel);
+            case 2 -> new Piton(nivel);
+            case 3 -> new Pinguim(nivel);
+            default -> throw new IllegalArgumentException("Classe de monstro inválida. Valor: " + n);
+        };
+    }
+
+    public static Monster criarMinionAleatorio(int nivel) {
+        return new Minion(nivel);
+    }
+
+    public static Monster criarMonstroChefeAleatorio(int nivel) {
+        final int n = rd.nextInt(3);
         return switch (n) {
             case 0 -> new Coruja(nivel);
             case 1 -> new Piton(nivel);
             case 2 -> new Pinguim(nivel);
             default -> throw new IllegalArgumentException("Classe de monstro inválida. Valor: " + n);
         };
-    }
-
-    public static Monster criarMinionAleatorio(int nivel) {
-
-        return new Minion(nivel);
     }
 }

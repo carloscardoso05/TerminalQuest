@@ -16,8 +16,8 @@ public class Pinguim extends Monster {
                 1 + (nivel / 2),
                 1 + (nivel / 2),
                 nivel,
-                12);
+                12,
+              new Congelar());
         super.setAtaque(new Attack("Mordida", 6, super.getForcaDeAtaque()));
-        super.getHabilidades().add(new Congelar());
     }
 }

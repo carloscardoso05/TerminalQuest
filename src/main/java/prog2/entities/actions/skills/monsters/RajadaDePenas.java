@@ -15,7 +15,7 @@ public class RajadaDePenas extends Skill{
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
-        super.checarMana(origem.getManaAtual(), origem.getNome());
+        super.checarMana(origem.getManaAtual(), origem);
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
         ResultadoAtaque resultadoTotal = ResultadoAtaque.ERROU;
@@ -28,7 +28,7 @@ public class RajadaDePenas extends Skill{
                 resultadoTotal = resultado;
             }
         }
-        registrarLog(origem.getNome(), alvos);
+        registrarLog(alvos);
         return resultadoTotal;
     }
 }

@@ -17,7 +17,7 @@ public class BolaDeFogo extends Skill {
 
     @Override
     public ResultadoAtaque execute(Player origem, List<Player> alvos) {
-        this.checarMana(origem.getManaAtual(), origem.getNome());
+        this.checarMana(origem.getManaAtual(), origem);
         origem.setManaAtual(origem.getManaAtual() - this.getCusto());
 
         Player alvo = alvos.get(0);
@@ -25,7 +25,7 @@ public class BolaDeFogo extends Skill {
         if (resultado == ResultadoAtaque.CRITICAL_HIT) {
             alvo.getStatus().add(new Queimado());
         }
-        registrarLog(origem.getNome(), alvos);
+        registrarLog(alvos);
         return resultado;
     }
 }

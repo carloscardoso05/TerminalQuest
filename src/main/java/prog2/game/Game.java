@@ -3,7 +3,6 @@ package prog2.game;
 import prog2.entities.players.heroes.Hero;
 import prog2.game.log.Log;
 import prog2.util.PlayerFactory;
-import prog2.util.ToString;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -47,10 +46,5 @@ public class Game implements Serializable {
                 PlayerFactory.criarHeroiAleatorio("Heroi 3"),
                 PlayerFactory.criarHeroiAleatorio("Heroi 4")
         );
-    }
-
-    @Override
-    public String toString() {
-        return ToString.fromGetters(this);
     }
 }

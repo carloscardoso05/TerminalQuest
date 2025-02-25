@@ -16,14 +16,14 @@ public abstract class Skill extends Action {
         this.custo = custo;
     }
 
-    protected void checarMana(int mana, String playerName) {
+    protected void checarMana(int mana, Player player) {
         if (mana < this.getCusto()){
-            Log.getInstance().game(playerName + " não possui mana suficiente para usar " + this.getName());
+            Log.getInstance().game(player + " não possui mana suficiente para usar " + this);
             throw new ManaInsuficiente();
         }
     }
 
-    protected void registrarLog(String playerName, List<Player> alvos) {
+    protected void registrarLog(List<Player> alvos) {
         StringBuilder alvosNames = new StringBuilder();
         Iterator<Player> alvoIterator = alvos.iterator();
         while (alvoIterator.hasNext()) {
@@ -32,7 +32,6 @@ public abstract class Skill extends Action {
                 alvosNames.append(", ");
             }
         }
-        Log.getInstance().game(playerName + " usou a habilidade " + this.getName() + "em " + alvosNames);
     }
 
     public int getCusto() {

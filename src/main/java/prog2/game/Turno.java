@@ -1,5 +1,6 @@
 package prog2.game;
 
+import org.fusesource.jansi.Ansi;
 import prog2.entities.players.Player;
 import prog2.entities.players.heroes.Hero;
 import prog2.entities.players.monsters.Minion;
@@ -7,16 +8,13 @@ import prog2.entities.players.monsters.Monster;
 import prog2.entities.status.Status;
 import prog2.game.log.Log;
 import prog2.util.PlayerFactory;
-import prog2.util.ToString;
 import prog2.util.exceptions.ImpedeAcao;
-import prog2.game.Difficulty;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Turno implements Serializable {
@@ -101,13 +99,15 @@ public class Turno implements Serializable {
             return;
         }
 
+        Log.getInstance().game(Ansi.ansi().bold().a("\n========== TURNO %d ==========".formatted(turnNumber)).reset());
+        Log.getInstance().game("Players: " + getPlayers());
         for (Player player : this.getPlayers()) {
             // Aplica os efeitos de status e verifica possibilidade de ação
             Iterator<Status> statusIter = player.getStatus().iterator();
             boolean acao = true;
             while (statusIter.hasNext()) {
                 Status status = statusIter.next();
-                if (status.getDuracaoRestante() < 1) {
+                    if (status.getDuracaoRestante() < 1) {
                     status.removerEfeito(player);
                     continue;
                 }
@@ -123,6 +123,8 @@ public class Turno implements Serializable {
             }
             player.ia.realizarAcao(players);
         }
+        System.out.println("Pressione Enter para ir para o próximo turno.");
+        new java.util.Scanner(System.in).nextLine();
         turnNumber += 1;
     }
 
@@ -176,10 +178,5 @@ public class Turno implements Serializable {
 
     public int getTurnNumber() {
         return turnNumber;
-    }
-
-    @Override
-    public String toString() {
-        return ToString.fromGetters(this);
     }
 }
