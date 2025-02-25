@@ -23,7 +23,7 @@ public class Turno implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private int turnNumber = 1;
-    private int difficulty;
+    private Difficulty difficulty;
     private static final int minionsCount = 3;
 
     private int getMediaNivel(List<? extends Player> players) {
@@ -70,7 +70,6 @@ public class Turno implements Serializable {
     }
 
     private void prepararProximaBatalha() {
-        difficulty++;
         turnNumber = 1;
         players.removeIf(Player::estaMorto);
     }
@@ -121,13 +120,14 @@ public class Turno implements Serializable {
         if (turnNumber == 1) {
             // Descobre o nível de acordo com a dificuldade
             int mediaNivel = getMediaNivel(getHeroes());
-            Difficulty dificuldade = Difficulty.values()[difficulty];
+            Difficulty dificuldade = difficulty;
             switch (dificuldade) {
                 case EASY:
                     mediaNivel = Math.max(1, mediaNivel - 1);
                     break;
                 case HARD:
                     mediaNivel++;
+                    break;
             }
             // Cria os monstros
             addPlayer(PlayerFactory.criarMonstroAleatorio(mediaNivel));
